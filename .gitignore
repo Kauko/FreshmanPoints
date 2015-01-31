@@ -27,7 +27,7 @@ node_modules
 # Users Environment Variables
 .lock-wscript
 
-#From yeogurt (Yeoman generator)
+# From yeogurt (Yeoman generator)
 node_modules
 *.log
 dist
@@ -37,4 +37,7 @@ client/bower_components
 server/config/secrets.js
 .DS_Store
 .yo-rc.json
+
+# Ignore test script bundle created by Karma (Not sure if this should be done)
+test/scripts/
 

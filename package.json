@@ -1,6 +1,21 @@
 {
   "name": "freshmanpoints",
   "version": "0.0.1",
+  "description": "System for Freshmen to gather points",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Kauko/FreshmanPoints.git"
+  },
+  "keywords": [
+    "Blanko"
+  ],
+  "author": "Blanko",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Kauko/FreshmanPoints/issues"
+  },
+  "homepage": "https://github.com/Kauko/FreshmanPoints",
   "dependencies": {
     "flux": "~2.0.0",
     "object-assign": "~1.0.0",
