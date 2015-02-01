@@ -6,14 +6,17 @@ var assign = require('object-assign');
 var CHANGE_EVENT = 'change';
 
 // Constructs a Store object.
-// Extends itself with supplied methods parameter, attaches EventEmitter to itself,
+// Extends itself with supplied methods parameter, 
+// attaches EventEmitter to itself,
 // and creates a mixin property for use in components.
 var Store = function(methods) {
 
   var self = this;
 
   if (methods.dispatcherToken) {
-    console.error('"dispatcherToken" cannot be used as a method as it is reserved.');
+    console.error(
+      '"dispatcherToken" cannot be used as a method as it is reserved.'
+    );
   }
 
   if (methods.mixin) {

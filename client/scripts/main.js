@@ -21,7 +21,8 @@ userActions.isAuthenticated({
     var enablePushState = true;
 
     // Detect is pushState is available
-    var pushState = !!(enablePushState && window.history && window.history.pushState);
+    var pushState = !!(enablePushState && window.history && 
+      window.history.pushState);
 
     if (pushState) {
       // Start listening to route changes with pushState

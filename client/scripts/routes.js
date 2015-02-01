@@ -6,10 +6,14 @@ var messagesActions = require('./actions/messages');
 var userStore = require('./stores/user');
 var IndexPage = React.createFactory(require('./components/index.jsx'));
 var LoginPage = React.createFactory(require('./components/account/login.jsx'));
-var SignupPage = React.createFactory(require('./components/account/signup.jsx'));
-var ResetPage = React.createFactory(require('./components/account/reset.jsx'));
-var ForgotPage = React.createFactory(require('./components/account/forgot.jsx'));
-var SettingsPage = React.createFactory(require('./components/account/settings.jsx'));
+var SignupPage = 
+  React.createFactory(require('./components/account/signup.jsx'));
+var ResetPage = 
+  React.createFactory(require('./components/account/reset.jsx'));
+var ForgotPage = 
+  React.createFactory(require('./components/account/forgot.jsx'));
+var SettingsPage = 
+  React.createFactory(require('./components/account/settings.jsx'));
 
 var render = function(Page) {
   React.render(new Page(), document.getElementById('app-wrapper'));
