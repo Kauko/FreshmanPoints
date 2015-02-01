@@ -1,0 +1,39 @@
+                                      
+                :::::::               === Online Points System for Freshmen ===
+              ::::::::::              -*-*-*-*-*-*- By Blanko -*-*-*-*-*-*-*-*- 
+            ::::::::::::              
+          :::::::::::::::             	    Started as a student project
+         ::::::;  :::::::             		    Members:
+         ;:::;     ::::::             		 Sami Leinonen
+        ::::       :::::::            		 Tuomas Höyhtyä
+        :::         ::::::                       Joni Korpelin
+        :::        :::::::                       Petri Huotari
+;       :::        ::::::                             feat.
+;        ::        ::::;;             		Teemu Kaukoranta
+;        :::       :::;:              		  Samu Mikkonen
+;        ::;:     ::::::              		  Jarkko Orava
+;:       ;::::    :::::::::                        Anna Runtti
+;:        ::::     ::::::::;::;       
+;:;       ::::      ;;;::::::;:::                      ""
+:::        ::             ::::::::;    If debugging is the process of removing
+::::                        ::;;::::;            software bugs,
+;:::;                          ;:::::  then the programming must be the process
+ ::::;                  ::::    :::::;        of putting them in.
+ ::::::                :::::::;;:;:::;                 ""
+  ::::::               ::::::::::::::           -Edsger Dijkstra
+   ::::::              ::::::::::::   
+    :::::::.           :::::          
+     :::::;:`           ::::          
+      ::::::;::;        ;:::::        
+       ::::::::;:;       ::::;:       
+        :;;::::::;`       ;::::;      
+           ;:::::::        :;:::;,    
+            :;;;;:;         :::;::    
+            `';;;;;          :;:;:    
+             ';;;;;:     :    ::::;   
+             ''';;;'    :;:    ::::   
+             :';;;;;`   ::::   ;::;:  
+              '';;;;'  ;;:::;   :;::  
+              '';;;;'  ;;;:::    :::: 
+              '';;;;'  ;;:;:::   :::: 
+              ,';;;;', :::::::   ;:::;
