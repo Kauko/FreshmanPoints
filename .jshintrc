@@ -1,7 +1,9 @@
 {
   "bitwise": true,
+  "camelcase":true,
   "curly": true,
   "eqeqeq": true,
+  "freeze":true,
   "forin": true,
   "immed": true,
   "latedef": true,
@@ -25,6 +27,11 @@
   "node": true,
   "expr": true,
   "maxerr": 100,
+  "maxdepth":3,
+  "maxstatements": 15,
+  "maxlen": 80,
+  "eqnull": true,
+  "funcscope": true,
   "predef": [
     "require",
     "define",
