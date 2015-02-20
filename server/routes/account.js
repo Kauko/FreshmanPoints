@@ -17,6 +17,7 @@ var routes = function(app) {
   app.post('/reset/:token', accountController.postReset);
   app.get('/signup', accountController.signup);
   app.get('/settings', accountController.settings);
+  app.get('/greetings', accountController.greetings);
 };
 
 module.exports = routes;

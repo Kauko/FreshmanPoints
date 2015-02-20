@@ -14,6 +14,7 @@ var ForgotPage =
   React.createFactory(require('./components/account/forgot.jsx'));
 var SettingsPage = 
   React.createFactory(require('./components/account/settings.jsx'));
+var GreetingsPage = React.createFactory(require('./components/greetings.jsx'));
 
 var render = function(Page) {
   React.render(new Page(), document.getElementById('app-wrapper'));
@@ -76,13 +77,42 @@ var settings = function() {
   render(SettingsPage);
 };
 
+var greetings = function() {
+  //render(GreetingsPage);
+
+  //ennoo ihan varma pitäskö data antaa täällä vai hakea myöhemmin funktiolla
+  //tuntus luontevammalta jos se ois .jsxssä
+
+  var myElement = GreetingsPage({events: Events});
+  React.render(myElement, document.getElementById('app-wrapper'));
+};
+
 var routes = {
   '/login': login,
   '/forgot': forgot,
   '/reset/:token': reset,
   '/signup': signup,
-  '/settings': settings,
-  '/': index
+  '/settings': settings,  
+  '/': index,
+  '/greetings': greetings
 };
 
 module.exports = routes;
+
+var Events = [
+    {title: 'Kalijaa', 
+    description: 'juuaan vitusti', 
+    image: "images/KappaHD.jpg"},
+
+    {title: 'Lissää kalijaa', 
+    description: 'tääläki juuaan', 
+    image: "images/KappaHD.jpg"},
+
+    {title: 'Oisko wckokkia vähä', 
+    description: 'sielä on kyykkää (ja kalijaa)', 
+    image: "images/KappaHD.jpg"},
+];
+var Events2 = {
+  title: 'Kalijaa', 
+  description: 'juuaan vitusti', 
+  image: "images/KappaHD.jpg"};

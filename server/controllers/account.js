@@ -302,6 +302,11 @@ var settingsPage = function(req, res) {
   res.sendFile(path.join(settings.staticAssets, '/index.html'), { root: settings.root });
 };
 
+var greetingsPage = function(req, res) {
+  // Render index.html to allow application to handle routing
+  res.sendFile(path.join(settings.staticAssets, '/index.html'), { root: settings.root });
+};
+
 module.exports = {
   login: login,
   postLogin: postLogin,
@@ -310,5 +315,6 @@ module.exports = {
   reset: reset,
   forgot: forgot,
   postForgot: postForgot,
-  settings: settingsPage
+  settings: settingsPage,
+  greetings: greetingsPage
 };
