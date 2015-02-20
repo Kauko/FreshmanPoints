@@ -17,7 +17,9 @@ var Defaults = {
     lastName: 'Doe'
   },
 
-  messages: {}
+  messages: {},
+
+  color: {}
 
 
 };
