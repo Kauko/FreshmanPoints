@@ -2,6 +2,7 @@
 
 var React = require('react');
 var DefaultLayout = require('./layouts/default.jsx');
+var BS = require('react-bootstrap');
 
 
 //#################  testikoodailuja  ##########################
@@ -130,27 +131,21 @@ var EventInfoList = React.createClass({
         var rows = []
         this.props.events.forEach(function(event){
             {/*rows.push(<div>asd</div>);    //test*/}
-            rows.push(<EventInfo event={event} />);
+            rows.push(<EventInfo event={event} key={event.id} />);
         });
         return(
             <table> {/*tähän on varmaan järkevämpiki ratkasu*/}
                 <thead>
-                    <div className="ListTitle"><h1>Täs ois näitä tapahtumia</h1></div>
+                    <div className="ListTitle"><h1>Täs ois näitä tapahtumia</h1>
+                    <BS.Button> bootstrapin nappula</BS.Button>
+                    <button> normi</button>
+                    </div>
                 </thead>
                 <tbody>{rows}</tbody>
             </table>
         );
     }
 });
-
-var Events = [
-    {title: 'Kalijaa', description: 'juuaan vitusti'},
-    {title: 'Lissää kalijaa', description: 'tääläki juuaan'}
-];
-
-var Events2 = [
-    {title: 'Kalijaa', description: 'juuaan vitusti'}
-];
  
 //React.renderComponent(<FilterableProductTable products={PRODUCTS} />, document.body);
 //module.exports = EventInfo;

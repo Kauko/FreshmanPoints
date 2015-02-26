@@ -48,6 +48,8 @@ var UserModel = function(sequelize, DataTypes) {
     }
   });
 
+  //User.sync({ force:true })
+
   // Run before validating any data
   User.hook('beforeValidate', function(user, done) {
 

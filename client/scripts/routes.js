@@ -80,9 +80,6 @@ var settings = function() {
 var greetings = function() {
   //render(GreetingsPage);
 
-  //ennoo ihan varma pitäskö data antaa täällä vai hakea myöhemmin funktiolla
-  //tuntus luontevammalta jos se ois .jsxssä
-
   var myElement = GreetingsPage({events: Events});
   React.render(myElement, document.getElementById('app-wrapper'));
 };
@@ -100,15 +97,18 @@ var routes = {
 module.exports = routes;
 
 var Events = [
-    {title: 'Kalijaa', 
+    {title: 'Kalijaa',
+    id: '1', 
     description: 'juuaan vitusti', 
     image: "images/KappaHD.jpg"},
 
     {title: 'Lissää kalijaa', 
+    id: '2',
     description: 'tääläki juuaan', 
     image: "images/KappaHD.jpg"},
 
     {title: 'Oisko wckokkia vähä', 
+    id: '3',
     description: 'sielä on kyykkää (ja kalijaa)', 
     image: "images/KappaHD.jpg"},
 ];
