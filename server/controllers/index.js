@@ -12,6 +12,12 @@ var indexController = function(req, res) {
   res.sendFile(path.join(settings.staticAssets, '/index.html'), { root: settings.root });
 };
 
+var scoreboardPage = function(req, res) {
+  res.sendFile(path.join(settings.staticAssets, '/index.html'), { root: settings.root });
+};
+
+
 module.exports = {
-  index: indexController
+  index: indexController,
+  scoreboard: scoreboardPage
 };

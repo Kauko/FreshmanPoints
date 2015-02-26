@@ -14,6 +14,8 @@ var ForgotPage =
   React.createFactory(require('./components/account/forgot.jsx'));
 var SettingsPage = 
   React.createFactory(require('./components/account/settings.jsx'));
+var ScoreboardPage = 
+  React.createFactory(require('./components/scoreboard.jsx'));
 
 var render = function(Page) {
   React.render(new Page(), document.getElementById('app-wrapper'));
@@ -76,12 +78,22 @@ var settings = function() {
   render(SettingsPage);
 };
 
+var scoreboard = function() {
+  // If user is logged in, redirect to settings page
+  if (userStore.get().loggedIn) {
+    return routeActions.setRoute('/settings');
+  }
+
+  render(ScoreboardPage);
+};
+
 var routes = {
   '/login': login,
   '/forgot': forgot,
   '/reset/:token': reset,
   '/signup': signup,
   '/settings': settings,
+  '/scoreboard': scoreboard,
   '/': index
 };
 

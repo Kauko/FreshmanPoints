@@ -41,6 +41,9 @@ var NavbarComponent = React.createClass({
         <li className="nav-item">
           <Link url="/signup">Create Account</Link>
         </li>
+        <li>
+          <button onClick={this.vaihtavari}> Vaihta i </button>
+        </li>
       </ul>
       /* jshint ignore:end */
     );
@@ -67,7 +70,11 @@ var NavbarComponent = React.createClass({
   // Event handler for 'change' events coming from store mixins.
   _onChange: function() {
     this.setState(getState());
+  },
+  vaihtavari: function() {
+    
   }
 });
 
 module.exports = NavbarComponent;
+  
