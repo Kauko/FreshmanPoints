@@ -41,6 +41,12 @@ var SettingsComponent = React.createClass({
             <input type="text" name="lastName" id="lastName" defaultValue={user.lastName} />
           </p>
 
+          <p>
+            <label htmlFor="nickName">Last Name:</label>
+            <input type="text" name="nickName" id="nickName" defaultValue={user.nickName} />
+          </p>
+
+
           <button>Update Profile</button>
         </form>
 

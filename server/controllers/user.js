@@ -110,6 +110,7 @@ var updateProfile = function(req, res, next) {
     user.email = req.body.email || '';
     user.firstName = req.body.firstName || '';
     user.lastName = req.body.lastName || '';
+    user.nickName = req.body.nickName || '';
 
     user.save().success(function() {
       res.status(200).json({

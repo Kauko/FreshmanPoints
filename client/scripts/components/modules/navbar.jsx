@@ -4,6 +4,7 @@ var React = require('react');
 var Link = require('./link.jsx');
 var userStore = require('../../stores/user');
 var userActions = require('../../actions/user');
+var BS = require('react-bootstrap');
 
 var getState = function() {
   return {
@@ -19,8 +20,11 @@ var NavbarComponent = React.createClass({
   render: function() {
     var user = this.props.user;
     var navLinks = user.loggedIn ? (
-      /* jshint ignore:start */
-      <ul className="nav-list pull-right">
+      
+
+
+
+        <ul className="nav-list pull-right">
         <li className="nav-item">
           Hello {user.firstName ? user.firstName : user.email}
         </li>
@@ -30,40 +34,82 @@ var NavbarComponent = React.createClass({
         <li className="nav-item">
           <Link url="/logout" onClick={this.handleLogout}>Logout</Link>
         </li>
-        <li className="greetings">
-          <Link url="/greetings">greetings</Link>
+        <li className="nav-item">
+          <Link url="/greetings">Greetings</Link>
         </li>
       </ul>
-      /* jshint ignore:end */
+/*
+      <ul>
+
+        <BS.NavItem>Hello {user.firstName ? user.firstName : user.email}</BS.NavItem>
+     
+        <BS.NavItem eventKey="1" href="/settings">My Account</BS.NavItem>
+     
+        <BS.NavItem eventKey="2" href="/logout" onClick={this.handleLogout}>Logout</BS.NavItem>
+     
+        <BS.NavItem eventKey="3" href="/greetings">Greetings</BS.NavItem>
+
+      </ul>
+*/
+
     ) : (
-      /* jshint ignore:start */
-      <ul className="nav-list pull-right">
-        <li className="nav-item">
+     
+
+
+
+        <ul>
+        <li>
           <Link url="/login">Login</Link>
         </li>
-        <li className="nav-item">
+        <li>
           <Link url="/signup">Create Account</Link>
         </li>
-        <li className="greetings">
-          <Link url="/greetings">greetings</Link>
+      
+      <li>
+          <Link url="/greetings">Greetings</Link>
         </li>
-      </ul>
-      /* jshint ignore:end */
+        </ul>
+
+
+
+
+
+
+
+/*
+   
+      
+        <BS.NavItem eventKey="1" href="/login">Login</BS.NavItem>
+      
+        <BS.NavItem eventKey="2" href="/signup">Create account</BS.NavItem>
+      
+        <BS.NavItem eventKey="3" href="/greetings">Greetings</BS.NavItem>
+
+*/
     );
 
     return (
-      /* jshint ignore:start */
-      <div>
-        <div className="navbar">
-          <div className="nav">
-            <ul className="nav-list pull-left">
-              <li className="nav-item"><Link url="/">Home</Link></li>
-            </ul>
-            {navLinks}
-          </div>
-        </div>
-      </div>
-      /* jshint ignore:end */
+   
+    
+
+      <BS.Navbar brand="Freshman Points -tsydeemi" right eventKey={0} inverse toggleNavKey={0}>
+
+      <BS.Nav>
+      
+      {navLinks}
+      
+        
+
+       
+
+      </BS.Nav>
+      </BS.Navbar>
+
+
+
+
+
+
     );
   },
   handleLogout: function(e) {
