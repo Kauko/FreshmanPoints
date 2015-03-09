@@ -28,12 +28,21 @@ var GreetingsComponent = React.createClass({
 //########### Tästä alkaa koodit jotka tekee jotaki atm #####################
 
 var EventInfo = React.createClass({
+    
+
+
+    remove: function () {
+      EventInfo.destroy(this.props.event.id);
+    },
+
+
+
     render: function() {
         return (
            
                 
 
-                <BS.Panel bsStyle="primary" header={this.props.event.title}>
+                <BS.Panel fluid bsStyle="primary" backdrop={true} header={this.props.event.title}>
 
 
                     <img src="images/KappaHD.jpg" height="150" width="150" />

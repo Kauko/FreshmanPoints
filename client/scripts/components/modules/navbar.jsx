@@ -18,12 +18,12 @@ var NavbarComponent = React.createClass({
     return getState();
   },
   render: function() {
+   
     var user = this.props.user;
     var navLinks = user.loggedIn ? (
       
-
-
-
+        
+        /*
         <ul className="nav-list pull-right">
         <li className="nav-item">
           Hello {user.firstName ? user.firstName : user.email}
@@ -37,25 +37,33 @@ var NavbarComponent = React.createClass({
         <li className="nav-item">
           <Link url="/greetings">Greetings</Link>
         </li>
-      </ul>
-/*
-      <ul>
+      </ul>*/
+      
+      
+    <BS.Navbar brand="Freshman Points -tsydeemi" right eventKey={0} inverse toggleNavKey={0}>
+
+
+      <BS.Nav>
 
         <BS.NavItem>Hello {user.firstName ? user.firstName : user.email}</BS.NavItem>
      
-        <BS.NavItem eventKey="1" href="/settings">My Account</BS.NavItem>
+        <BS.NavItem eventKey={1} href="/settings">My Account</BS.NavItem>
      
-        <BS.NavItem eventKey="2" href="/logout" onClick={this.handleLogout}>Logout</BS.NavItem>
+        <BS.NavItem eventKey={2} href="/logout" onClick={this.handleLogout}>Logout</BS.NavItem>
      
-        <BS.NavItem eventKey="3" href="/greetings">Greetings</BS.NavItem>
+        <BS.NavItem eventKey={3} href="/greetings">Greetings</BS.NavItem>
 
-      </ul>
-*/
+      </BS.Nav>
+
+
+    </BS.Navbar>
+      
+
 
     ) : (
      
 
-
+/*
 
         <ul>
         <li>
@@ -71,46 +79,49 @@ var NavbarComponent = React.createClass({
         </ul>
 
 
-
-
-
-
-
-/*
-   
-      
-        <BS.NavItem eventKey="1" href="/login">Login</BS.NavItem>
-      
-        <BS.NavItem eventKey="2" href="/signup">Create account</BS.NavItem>
-      
-        <BS.NavItem eventKey="3" href="/greetings">Greetings</BS.NavItem>
-
 */
-    );
 
-    return (
-   
-    
+    <BS.Navbar brand="Freshman Points -tsydeemi" right eventKey={0} inverse toggleNavKey={0}>
 
-      <BS.Navbar brand="Freshman Points -tsydeemi" right eventKey={0} inverse toggleNavKey={0}>
 
       <BS.Nav>
       
-      {navLinks}
+        <BS.NavItem eventKey={1} href="/login">Login</BS.NavItem>
       
-        
-
-       
+        <BS.NavItem eventKey={2} href="/signup">Create account</BS.NavItem>
+      
+        <BS.NavItem eventKey={3} href="/greetings">Greetings</BS.NavItem>
 
       </BS.Nav>
-      </BS.Navbar>
 
 
-
-
-
+    </BS.Navbar>
 
     );
+    
+    
+ return (
+     
+
+        
+
+    <div>
+
+    {navLinks}
+      
+    </div>
+
+
+       
+      
+    );
+
+
+
+
+
+
+
   },
   handleLogout: function(e) {
     e.preventDefault();
