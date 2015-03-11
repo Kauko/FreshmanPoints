@@ -8,15 +8,15 @@ var eventActions = require('../actions/events');
 
 var LikeButton = React.createClass({
   getInitialState: function() {
-    return {liked: false};
+    return {clicked: false};
   },
   handleClick: function(event) {
     eventActions.signup();
-    this.setState({liked: !this.state.liked});    
+    this.setState({clicked: !this.state.clicked});    
   },
   render: function() {
     //var text = this.state.liked ? this.props.event.id : 'Et uskalla painaa tästä';
-    var text = 'Ilmoittaudu';
+    var text = this.state.clicked ? 'Oot ny ilmottautunu :)' : 'Ilmoittaudu';
     return (
       <BS.Button onClick={this.handleClick}>
         {text}
@@ -50,21 +50,23 @@ var EventInfo = React.createClass({
     }
 });
 
-var getState = function() {
-    //console.log('haetaan eventStore.get');
-  return {
-    events: eventStore.get()
-  };
-};
+// var getState = function() {
+//     //console.log('haetaan eventStore.get');
+//   return {
+//     events: eventStore.get()
+//   };
+// };
 
 var EventInfoList = React.createClass({
     //mixins: [eventStore.mixin],
     getInitialState: function() {
-        return getState();
+        //return getState();
+
+        //laitetaan tämä aluksi tyhjäksi listaksi
+        return {events: []};
     },
     componentDidMount: function(){
         var self = this;
-        //console.log('tehtii just eventinfolista');
 
         eventActions.getEvents({
             success: function (res) {
@@ -73,10 +75,6 @@ var EventInfoList = React.createClass({
                 self.setState({events: res});
             }
         });
-
-        //this.setState({events: [{title:'asdasd',description:'qwe',id:'1'}]})
-        
-        //this.setState({events: eventStore.get});
     },
     render: function(){
         console.log('tehhään eveninfolist ');

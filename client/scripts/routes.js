@@ -77,23 +77,6 @@ var settings = function() {
   render(SettingsPage);
 };
 
-var Events = [
-    {title: 'Kalijaa',
-    id: '1', 
-    description: 'juuaan vitusti', 
-    image: 'images/KappaHD.jpg'},
-
-    {title: 'Lissää kalijaa', 
-    id: '2',
-    description: 'tääläki juuaan', 
-    image: 'images/KappaHD.jpg'},
-
-    {title: 'Oisko wckokkia vähä', 
-    id: '3',
-    description: 'sielä on kyykkää (ja kalijaa)', 
-    image: 'images/KappaHD.jpg'},
-];
-
 var greetings = function() {
   render(GreetingsPage);
 
@@ -108,7 +91,7 @@ var routes = {
   '/signup': signup,
   '/settings': settings,  
   '/': index,
-  '/greetings': greetings
+  '/events': greetings
 };
 
 module.exports = routes;
