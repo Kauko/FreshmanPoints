@@ -40,13 +40,15 @@ var NavbarComponent = React.createClass({
       </ul>*/
       
       
-    <BS.Navbar brand="Freshman Points -tsydeemi" right eventKey={0} inverse toggleNavKey={0}>
+    <BS.Navbar fluid brand="Freshman Points -tsydeemi" right eventKey={0} inverse toggleNavKey={0}>
 
 
       <BS.Nav>
 
         <BS.NavItem>Hello {user.firstName ? user.firstName : user.email}</BS.NavItem>
      
+        <BS.NavItem eventKey={0} href="/">Home</BS.NavItem>
+
         <BS.NavItem eventKey={1} href="/settings">My Account</BS.NavItem>
      
         <BS.NavItem eventKey={2} href="/logout" onClick={this.handleLogout}>Logout</BS.NavItem>
@@ -81,11 +83,13 @@ var NavbarComponent = React.createClass({
 
 */
 
-    <BS.Navbar brand="Freshman Points -tsydeemi" right eventKey={0} inverse toggleNavKey={0}>
+    <BS.Navbar fluid href="/" brand="Freshman Points -tsydeemi" right eventKey={0} inverse toggleNavKey={0}>
 
 
       <BS.Nav>
       
+        <BS.NavItem eventKey={0} href="/">Home</BS.NavItem>
+
         <BS.NavItem eventKey={1} href="/login">Login</BS.NavItem>
       
         <BS.NavItem eventKey={2} href="/signup">Create account</BS.NavItem>

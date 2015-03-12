@@ -42,7 +42,8 @@ var EventInfo = React.createClass({
            
                 
 
-                <BS.Panel fluid bsStyle="primary" backdrop={true} header={this.props.event.title}>
+                <BS.Panel bsStyle="primary" header={this.props.event.title}>
+
 
 
                     <img src="images/KappaHD.jpg" height="150" width="150" />
@@ -51,22 +52,40 @@ var EventInfo = React.createClass({
                     {this.props.event.description} 
 
 
-                    <button className="btn btn-xs btn-danger" onClick={this.remove}>
-                        
-                        Perus-Bootstrap -Delete-namiska
-                    
-                    </button>
 
-
-                    <BS.Button onClick={this.enroll}>
+                    <BS.Button onClick={this.removeListItem}>
                        
-                        React-Bootstrap -Ilmoittaudu-nappi
+                    Delete 
                    
                     </BS.Button>
 
 
-                    <button>HTML -Edit-nabbula</button>
+
+
+
+
+                   
+                    <p>
+
+                    <BS.Button onClick={this.enroll} bsSize="large">
+                       
+                    React-Bootstrap -Ilmoittaudu-nappi
+                   
+                    </BS.Button>
+
+                    </p>
                     
+
+                <p>
+
+                <BS.DropdownButton bsStyle="info" title="Ilmoittautuneet">
+                    
+                <BS.Input type="checkbox" label="Checkbox" />
+
+                </BS.DropdownButton>
+                    
+                </p>
+
 
                 </BS.Panel>
 
@@ -78,6 +97,37 @@ var EventInfo = React.createClass({
 });
 
 var EventInfoList = React.createClass({
+    
+
+
+    updateList: function (events) {
+    this.setState({
+      events: events
+    });
+  },
+
+  
+
+    removeListItem: function (event) {
+    var events = this.state.events;
+
+    delete rows[event];
+
+    this.updateList(events);
+  },
+
+/*
+updateListItem: function (event) {
+    var list = this.state.list;
+    list[event.id] = item;
+
+    this.updateList(list);
+  },
+*/
+
+
+
+
     render: function(){
        
         var rows = []
