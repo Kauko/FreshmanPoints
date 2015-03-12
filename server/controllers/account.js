@@ -304,23 +304,37 @@ var settingsPage = function(req, res) {
 };
 
 var greetingsPage = function(req, res) {
+  var event = {
+    title: 'Tässä ois toinen tapahtuma',
+    description: 'oiskohan sielä kalijaa'
+  };
+  //Event.create(event)
+  //Event.findAll().then(function(events) {
+    //res.status(200).json(events);
+  //});
+
+  var Events = [
+    {title: 'Kalijaa',
+    id: '1', 
+    description: 'juuaan vitusti', 
+    image: "images/KappaHD.jpg"},
+
+    {title: 'Lissää kalijaa', 
+    id: '2',
+    description: 'tääläki juuaan', 
+    image: "images/KappaHD.jpg"},
+
+    {title: 'Oisko wckokkia vähä', 
+    id: '3',
+    description: 'sielä on kyykkää (ja kalijaa)', 
+    image: "images/KappaHD.jpg"},
+];
+  
+  //res.status(200).json(Events);
+
   // Render index.html to allow application to handle routing
   res.sendFile(path.join(settings.staticAssets, '/index.html'), { root: settings.root });
 };
-
-var events = function(req, res) {
-  var event = {
-    title: 'Tässä ois kovakoodattu tapahtuma',
-    description: 'oiskohan sielä kalijaa'
-  };
-  console.log('Otas tästä vähän tapahtumia');
-  //res.status(200).json(event);
-  //Event.create(event)
-
-  Event.findAll().then(function(events) {
-    res.status(200).json(events);
-  });
-}
 
 module.exports = {
   login: login,
@@ -331,6 +345,5 @@ module.exports = {
   forgot: forgot,
   postForgot: postForgot,
   settings: settingsPage,
-  greetings: greetingsPage,
-  events: events
+  greetings: greetingsPage
 };

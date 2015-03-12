@@ -9,7 +9,7 @@ var userStore = require('../../stores/user');
 var getState = function() {
   return {
     title: pageStore.get().title,
-    user: userStore.get(),
+    user: userStore.get()
   };
 };
 

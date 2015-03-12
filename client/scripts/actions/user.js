@@ -2,7 +2,6 @@
 
 var Dispatcher = require('../dispatchers/default');
 var userConstants = require('../constants/user');
-var eventConstants = require('../constants/events');
 var messagesActions = require('./messages');
 var routeActions = require('./routes');
 var userDefaults = require('../constants/defaults').user;

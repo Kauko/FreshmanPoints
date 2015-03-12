@@ -29,12 +29,12 @@ var GreetingsComponent = React.createClass({
 
 var EventInfo = React.createClass({
     
-/*
+
 
     remove: function () {
       EventInfo.destroy(this.props.event.id);
     },
-*/
+
 
 
     render: function() {
@@ -98,7 +98,7 @@ var EventInfo = React.createClass({
 
 var EventInfoList = React.createClass({
     
-/*
+
 
     updateList: function (events) {
     this.setState({
@@ -115,7 +115,6 @@ var EventInfoList = React.createClass({
 
     this.updateList(events);
   },
-*/
 
 /*
 updateListItem: function (event) {
