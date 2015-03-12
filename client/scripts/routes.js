@@ -16,6 +16,8 @@ var SettingsPage =
   React.createFactory(require('./components/account/settings.jsx'));
 var ScoreboardPage = 
   React.createFactory(require('./components/scoreboard.jsx'));
+var GreetingsPage = React.createFactory(require('./components/greetings.jsx'));
+
 
 var render = function(Page) {
   React.render(new Page(), document.getElementById('app-wrapper'));
@@ -86,6 +88,29 @@ var scoreboard = function() {
 
   render(ScoreboardPage);
 };
+var Events = [
+    {title: 'Kalijaa',
+    id: '1', 
+    description: 'juuaan vitusti', 
+    image: 'images/KappaHD.jpg'},
+
+    {title: 'Lissää kalijaa', 
+    id: '2',
+    description: 'tääläki juuaan', 
+    image: 'images/KappaHD.jpg'},
+
+    {title: 'Oisko wckokkia vähä', 
+    id: '3',
+    description: 'sielä on kyykkää (ja kalijaa)', 
+    image: 'images/KappaHD.jpg'},
+];
+
+var greetings = function() {
+  render(GreetingsPage);
+
+  //var MyElement = new GreetingsPage({events: Events});
+  //React.render(MyElement, document.getElementById('app-wrapper'));
+};
 
 var routes = {
   '/login': login,
@@ -94,7 +119,9 @@ var routes = {
   '/signup': signup,
   '/settings': settings,
   '/scoreboard': scoreboard,
-  '/': index
+  '/': index,
+  '/greetings': greetings
 };
 
 module.exports = routes;
+

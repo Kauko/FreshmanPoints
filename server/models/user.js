@@ -24,6 +24,9 @@ var UserModel = function(sequelize, DataTypes) {
     lastName: {
       type: DataTypes.STRING,
     },
+    nickName: {
+      type: DataTypes.STRING,
+    },
 
     // Reset token
     resetPasswordToken: DataTypes.STRING,
@@ -44,6 +47,8 @@ var UserModel = function(sequelize, DataTypes) {
       }
     }
   });
+
+  //User.sync({ force:true })
 
   // Run before validating any data
   User.hook('beforeValidate', function(user, done) {
