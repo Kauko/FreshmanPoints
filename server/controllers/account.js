@@ -339,7 +339,7 @@ module.exports = {
   forgot: forgot,
   postForgot: postForgot,
   settings: settingsPage,
-  scoreboard: scoreboardPage
+  scoreboard: scoreboardPage,
   greetings: greetingsPage,
   events: events
 };
