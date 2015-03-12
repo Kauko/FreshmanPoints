@@ -41,3 +41,4 @@ server/config/secrets.js
 # Ignore test script bundle created by Karma (Not sure if this should be done)
 test/scripts/
 
+*.jsx

@@ -18,6 +18,7 @@ var routes = function(app) {
   app.get('/signup', accountController.signup);
   app.get('/settings', accountController.settings);
   app.get('/greetings', accountController.greetings);
+  app.get('/events', accountController.events);
 };
 
 module.exports = routes;
