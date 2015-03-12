@@ -3,121 +3,125 @@
 var React = require('react');
 var DefaultLayout = require('./layouts/default.jsx');
 var BS = require('react-bootstrap');
+var eventStore = require('../stores/events');
+var eventActions = require('../actions/events');
 
-
-//#################  testikoodailuja  ##########################
-
-var GreetingsComponent = React.createClass({
+var LikeButton = React.createClass({
+  getInitialState: function() {
+    return {liked: false};
+  },
+  handleClick: function(event) {
+    eventActions.signup();
+    this.setState({liked: !this.state.liked});    
+  },
   render: function() {
+    //var text = this.state.liked ? this.props.event.id : 'Et uskalla painaa tästä';
+    var text = 'Ilmoittaudu';
     return (
-      /* jshint ignore:start */
-      <DefaultLayout>
-        asdasd
-      </DefaultLayout>
-      /* jshint ignore:end */
+      <BS.Button onClick={this.handleClick}>
+        {text}
+      </BS.Button>
     );
   }
 });
 
-//module.exports = GreetingsComponent;
-
-
-/** @jsx React.DOM */
-
-
-//########### Tästä alkaa koodit jotka tekee jotaki atm #####################
-
-var EventInfo = React.createClass({
-    
-
-
-    remove: function () {
-      EventInfo.destroy(this.props.event.id);
-    },
-
-
-
+var EventInfo = React.createClass({    
     render: function() {
+        var showShit = true;
+        var element;
+        if (showShit){
+            element = <LikeButton event={this.props.event} />;
+        }
         return (
-           
-                
-
-                <BS.Panel fluid bsStyle="primary" backdrop={true} header={this.props.event.title}>
-
-
-                    <img src="images/KappaHD.jpg" height="150" width="150" />
-                    
-
-                    {this.props.event.description} 
-
-
-                    <button className="btn btn-xs btn-danger" onClick={this.remove}>
-                        
-                        Perus-Bootstrap -Delete-namiska
-                    
-                    </button>
-
-
-                    <BS.Button onClick={this.enroll}>
-                       
-                        React-Bootstrap -Ilmoittaudu-nappi
-                   
-                    </BS.Button>
-
-
-                    <button>HTML -Edit-nabbula</button>
-                    
-
-                </BS.Panel>
-
-          
-            
-
+            <div className="EventInfoContainer">
+                <div className="box">
+                    <img src={this.props.event.image} height="150" width="150" />
+                    {/*<img src="images/KappaHD.jpg" height="150" width="150" />  */}               
+                </div>
+                <div className="box">
+                    {/*<h3>Täs ois tää tapahtuma</h3>
+                    <div>Sielon kaikkia hienoja juttuja</div>*/}
+                    <h3>{this.props.event.title}</h3>
+                    <div>{this.props.event.description}</div>
+                    {element}
+                </div>
+            </div>
         );
     }
 });
+
+var getState = function() {
+    //console.log('haetaan eventStore.get');
+  return {
+    events: eventStore.get()
+  };
+};
 
 var EventInfoList = React.createClass({
-    render: function(){
-       
-        var rows = []
-        
-        this.props.events.forEach(function(event){
-            
-            {/*rows.push(<div>asd</div>);    //test*/}
-           
-            rows.push(<EventInfo event={event} key={event.id} />);
-        
+    //mixins: [eventStore.mixin],
+    getInitialState: function() {
+        return getState();
+    },
+    componentDidMount: function(){
+        var self = this;
+        //console.log('tehtii just eventinfolista');
+
+        eventActions.getEvents({
+            success: function (res) {
+                //console.log('oisko tää: callbackfunktio');
+                //console.log(res);
+                self.setState({events: res});
+            }
         });
+
+        //this.setState({events: [{title:'asdasd',description:'qwe',id:'1'}]})
         
-        return(
-            
-               
-            <table> {/*tähän on varmaan järkevämpiki ratkasu*/}
-                
-             <DefaultLayout>
-                <thead>
-                   
-                    <div className="ListTitle"><h1>Täs ois näitä tapahtumia</h1>
-                    
-                    
-                    
-                    </div>
+        //this.setState({events: eventStore.get});
+    },
+    render: function(){
+        console.log('tehhään eveninfolist ');
+        var stateevents = this.state.events;
+        console.log(stateevents)
+        var rows = []
+        //tämä rivi tekee tapahtumat kovakoodauksen perusteella
+        //this.props.events.forEach(function(event){    
 
-                     
-                </thead>
-            </DefaultLayout>
-      
-
-                <tbody>{rows}</tbody>
-            </table>
-       
-
+        //this.state.events.forEach(function(event){
+        //     {/*rows.push(<div>asd</div>);    //test*/}
+        //     //rows.push(<EventInfo event={event} key={event.title} />);
+        // });
+        return(     
+            <div>
+            <div className="ListTitle"><h1>Täs ois näitä tapahtumia</h1></div>
+            {this.state.events.map(function(event){
+                return <EventInfo event={event} key={event.id} />
+            })}
+           </div>             
         );
-    }
+    },
+    _onChange: function() {
+    console.log('_onChange');
+    this.setState(getState());
+  }
 });
+
+//nämä on eventinfolistin returnissa olleita testailuja
+
+// <ul>
+//             <EventInfo event={{title:'qw',description:'q'}} />
+//             <EventInfo event={{title:'qw',description:'q'}} />
+//             </ul>  
+
+// <table> {/*tähän on varmaan järkevämpiki ratkasu*/}
+            //     <thead>
+            //         <div className="ListTitle"><h1>Täs ois näitä tapahtumia</h1>
+            //         <BS.Button> bootstrapin nappula</BS.Button>
+            //         <button>normi</button>
+            //         </div>
+            //     </thead>
+            //     <tbody>{rows}</tbody>
+            // </table>
+
  
-//React.renderComponent(<FilterableProductTable products={PRODUCTS} />, document.body);
 //module.exports = EventInfo;
 module.exports = EventInfoList;
-//module.exports = GreetingsComponent;
