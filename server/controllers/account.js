@@ -314,8 +314,8 @@ var events = function(req, res) {
     description: 'oiskohan sielä kalijaa'
   };
   console.log('Otas tästä vähän tapahtumia');
-  //res.status(200).json(event);
-  //Event.create(event)
+  res.status(200).json(event);
+  Event.create(event)
 
   Event.findAll().then(function(events) {
     res.status(200).json(events);
