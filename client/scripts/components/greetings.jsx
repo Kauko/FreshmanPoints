@@ -33,19 +33,39 @@ var EventInfo = React.createClass({
             element = <LikeButton event={this.props.event} />;
         }
         return (
-            <div className="EventInfoContainer">
-                <div className="box">
-                    <img src={this.props.event.image} height="150" width="150" />
-                    {/*<img src="images/KappaHD.jpg" height="150" width="150" />  */}               
-                </div>
-                <div className="box">
-                    {/*<h3>Täs ois tää tapahtuma</h3>
-                    <div>Sielon kaikkia hienoja juttuja</div>*/}
-                    <h3>{this.props.event.title}</h3>
-                    <div>{this.props.event.description}</div>
-                    {element}
-                </div>
-            </div>
+           
+            <BS.Panel bsStyle="primary" header={this.props.event.title}>
+
+
+
+                <img src={this.props.event.image} height="150" width="150" />
+                    
+
+                {this.props.event.description} 
+
+                {element}
+
+
+                <BS.Button onClick={this.removeListItem}>
+                       
+                Delete 
+                   
+                </BS.Button>
+
+                    
+
+                <p>
+
+                <BS.DropdownButton bsStyle="info" title="Ilmoittautuneet">
+                    
+                <BS.Input type="checkbox" label="Checkbox" />
+
+                </BS.DropdownButton>
+                    
+                </p>
+
+
+                </BS.Panel>
         );
     }
 });
@@ -91,12 +111,14 @@ var EventInfoList = React.createClass({
         //     //rows.push(<EventInfo event={event} key={event.title} />);
         // });
         return(     
+            <DefaultLayout>
             <div>
             <div className="ListTitle"><h1>Täs ois näitä tapahtumia</h1></div>
             {this.state.events.map(function(event){
                 return <EventInfo event={event} key={event.id} />
             })}
-           </div>             
+           </div> 
+           </DefaultLayout>          
         );
     },
     _onChange: function() {
