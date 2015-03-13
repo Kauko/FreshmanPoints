@@ -12,6 +12,7 @@ var nodemailer = require('nodemailer');
 var passport = require('passport');
 var db = require('../config/database');
 var User = db.user;
+var Event = db.event;
 var settings = require('../config/env/default');
 var auth = require('../auth');
 
@@ -302,10 +303,32 @@ var settingsPage = function(req, res) {
   res.sendFile(path.join(settings.staticAssets, '/index.html'), { root: settings.root });
 };
 
+
 var scoreboardPage = function(req, res) {
+    // Render index.html to allow application to handle routing
+  res.sendFile(path.join(settings.staticAssets, '/index.html'), { root: settings.root });
+};
+
+var greetingsPage = function(req, res) {
   // Render index.html to allow application to handle routing
   res.sendFile(path.join(settings.staticAssets, '/index.html'), { root: settings.root });
 };
+
+
+var events = function(req, res) {
+  var event = {
+    title: 'Tässä ois kovakoodattu tapahtuma',
+    description: 'oiskohan sielä kalijaa'
+  };
+  console.log('Otas tästä vähän tapahtumia');
+  //res.status(200).json(event);
+  //Event.create(event)
+
+  Event.findAll().then(function(events) {
+    res.status(200).json(events);
+  });
+}
+
 
 module.exports = {
   login: login,
@@ -316,5 +339,7 @@ module.exports = {
   forgot: forgot,
   postForgot: postForgot,
   settings: settingsPage,
-  scoreboard: scoreboardPage
+  scoreboard: scoreboardPage,
+  greetings: greetingsPage,
+  events: events
 };

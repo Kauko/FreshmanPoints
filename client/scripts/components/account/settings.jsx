@@ -89,6 +89,7 @@ var SettingsComponent = React.createClass({
   },
   // Event handler for 'change' events coming from store mixins.
   _onChange: function() {
+    console.log('user._onChange');
     this.setState(getState());
   }
 });

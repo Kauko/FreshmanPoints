@@ -30,6 +30,9 @@ var NavbarComponent = React.createClass({
         <li className="nav-item">
           <Link url="/logout" onClick={this.handleLogout}>Logout</Link>
         </li>
+        <li className="greetings">
+          <Link url="/greetings">greetings</Link>
+        </li>
       </ul>
       /* jshint ignore:end */
     ) : (
@@ -42,7 +45,10 @@ var NavbarComponent = React.createClass({
           <Link url="/signup">Create Account</Link>
         </li>
         <li>
-          <button onClick={this.vaihtavari}> Vaihta i </button>
+          <Link url="/scoreboard"> scoreboard </Link>
+        </li>
+        <li className="greetings">
+          <Link url="/greetings">greetings</Link>
         </li>
       </ul>
       /* jshint ignore:end */
