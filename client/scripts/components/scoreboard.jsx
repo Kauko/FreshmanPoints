@@ -10,8 +10,7 @@ var ScoreboardComponent = React.createClass({
       /* jshint ignore:start */
       <DefaultLayout>
         <BS.Table className="shittable">
-          <Person first="Apina" last="paske" points="120" />
-          <Person first="Nadir" last="Derdour" points="-9000" />
+          <ScoreList data = {this.props.data} />
           <BS.Button bsStyle="primary">Primary</BS.Button>
         </BS.Table>
       </DefaultLayout>
@@ -39,5 +38,20 @@ var Person = React.createClass({
   }
 
 })
+
+var ScoreList = React.createClass({
+  render:function(){
+    var people = this.props.data.map(function(person){
+      return <Person first={person.first} last={person.last} points={person.points} />
+    })
+  }
+})
+
+var data = [
+  {
+    first:'Nadir', last='Derdour' points = '-9000'
+    first:'dsadr', last='as' points = '123' 
+  }
+]
 
 module.exports = ScoreboardComponent;
