@@ -14,9 +14,13 @@ var ForgotPage =
   React.createFactory(require('./components/account/forgot.jsx'));
 var SettingsPage = 
   React.createFactory(require('./components/account/settings.jsx'));
+<<<<<<< HEAD
 var ScoreboardPage = 
   React.createFactory(require('./components/scoreboard.jsx'));
 var GreetingsPage = React.createFactory(require('./components/greetings.jsx'));
+=======
+var EventsPage = React.createFactory(require('./components/events.jsx'));
+>>>>>>> testings/tuomas
 
 
 var render = function(Page) {
@@ -80,6 +84,7 @@ var settings = function() {
   render(SettingsPage);
 };
 
+<<<<<<< HEAD
 var scoreboard = function() {
   // If user is logged in, redirect to settings page
   if (userStore.get().loggedIn) {
@@ -107,6 +112,10 @@ var Events = [
 
 var greetings = function() {
   render(GreetingsPage);
+=======
+var events = function() {
+  render(EventsPage);
+>>>>>>> testings/tuomas
 
   //var MyElement = new GreetingsPage({events: Events});
   //React.render(MyElement, document.getElementById('app-wrapper'));
@@ -120,7 +129,7 @@ var routes = {
   '/settings': settings,
   '/scoreboard': scoreboard,
   '/': index,
-  '/greetings': greetings
+  '/events': events
 };
 
 module.exports = routes;

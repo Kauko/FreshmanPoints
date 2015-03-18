@@ -17,10 +17,18 @@ var routes = function(app) {
   app.post('/reset/:token', accountController.postReset);
   app.get('/signup', accountController.signup);
   app.get('/settings', accountController.settings);
+<<<<<<< HEAD
   app.get('/scoreboard', accountController.scoreboard);
   app.get('/greetings', accountController.greetings);
   app.get('events.json', )
   app.get('/events', accountController.events);
+=======
+  app.get('/events', accountController.greetings);
+  app.get('/events.json', accountController.events);
+
+  app.delete('/events',  auth.isAuthenticated, accountController.deleteEvent);
+  app.post('/events', accountController.addParticipation);
+>>>>>>> testings/tuomas
 };
 
 module.exports = routes;

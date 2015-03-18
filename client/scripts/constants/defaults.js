@@ -20,6 +20,7 @@ var Defaults = {
   messages: {},
 
   //tämä pitäs olla tyhjä defaulttina mutta testaillessa mukava näin
+  //en tiiä tarviiko tässä omaa storea joten otetaan pois käytöstä nyt
   events: [
     {
       title: 'hoiss',

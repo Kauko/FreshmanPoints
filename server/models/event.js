@@ -15,8 +15,11 @@ var EventModel = function(sequelize, DataTypes) {
     }
   });
 
-  //Event.sync()
-  //Event.sync({ force:true })
+  //ei ilmeisesti näin
+  //Event.belongsToMany(User);  
+
+  //Event.sync();
+  //Event.sync({ force:true })  
 
   return Event;
 };
