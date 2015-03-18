@@ -19,6 +19,7 @@ var routes = function(app) {
   app.get('/settings', accountController.settings);
   app.get('/scoreboard', accountController.scoreboard);
   app.get('/greetings', accountController.greetings);
+  app.get('events.json', )
   app.get('/events', accountController.events);
 };
 
