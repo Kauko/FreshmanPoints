@@ -30,8 +30,8 @@ var NavbarComponent = React.createClass({
         <li className="nav-item">
           <Link url="/logout" onClick={this.handleLogout}>Logout</Link>
         </li>
-        <li className="greetings">
-          <Link url="/greetings">greetings</Link>
+        <li className="events">
+          <Link url="/events">events</Link>
         </li>
       </ul>
       /* jshint ignore:end */

@@ -48,7 +48,10 @@ var UserModel = function(sequelize, DataTypes) {
     }
   });
 
-  //User.sync({ force:true })
+  //User.belongsToMany(Event);
+
+  //User.sync({ force:true });  
+  //User.sync();  
 
   // Run before validating any data
   User.hook('beforeValidate', function(user, done) {

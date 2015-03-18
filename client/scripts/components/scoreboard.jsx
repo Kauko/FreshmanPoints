@@ -36,9 +36,9 @@ var Person = React.createClass({
         <td>
           <h2>{this.props.first}</h2>
         </td>
-        <td>
-          <h2>{this.props.points}</h2>
-        </td>
+        //<td>
+          //<h2>{this.props.points}</h2>
+        //</td>
       </tr>
       /* jshint ignore:end */
       )
@@ -46,6 +46,20 @@ var Person = React.createClass({
 });
 
 var PersonList = React.createClass({
+  getInitialState: function() {
+    return getSate();
+  },
+
+  componentDidMount: function() {
+    var self = this;
+
+    eventActions.getEvents({
+      success: function(res){
+        self.setState({users: res})
+      }
+    });
+  },
+
   render: function() {
         var people = this.props.data.map(function(person){
           return <Person first={person.first} last={person.last} person={person.points} />

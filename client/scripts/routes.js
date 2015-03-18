@@ -16,7 +16,7 @@ var SettingsPage =
   React.createFactory(require('./components/account/settings.jsx'));
 var ScoreboardPage = 
   React.createFactory(require('./components/scoreboard.jsx'));
-var GreetingsPage = React.createFactory(require('./components/greetings.jsx'));
+var EventsPage = React.createFactory(require('./components/events.jsx'));
 
 
 var render = function(Page) {
@@ -105,8 +105,8 @@ var Events = [
     image: 'images/KappaHD.jpg'},
 ];
 
-var greetings = function() {
-  render(GreetingsPage);
+var events = function() {
+  render(EventsPage);
 
   //var MyElement = new GreetingsPage({events: Events});
   //React.render(MyElement, document.getElementById('app-wrapper'));
@@ -120,7 +120,7 @@ var routes = {
   '/settings': settings,
   '/scoreboard': scoreboard,
   '/': index,
-  '/greetings': greetings
+  '/events': events
 };
 
 module.exports = routes;

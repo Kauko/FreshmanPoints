@@ -13,6 +13,7 @@ var passport = require('passport');
 var db = require('../config/database');
 var User = db.user;
 var Event = db.event;
+var UserEvent = db.userEvent;
 var settings = require('../config/env/default');
 var auth = require('../auth');
 
@@ -309,13 +310,14 @@ var scoreboardPage = function(req, res) {
   res.sendFile(path.join(settings.staticAssets, '/index.html'), { root: settings.root });
 };
 
-var greetingsPage = function(req, res) {
+
+var eventsPage = function(req, res) {
   // Render index.html to allow application to handle routing
   res.sendFile(path.join(settings.staticAssets, '/index.html'), { root: settings.root });
 };
 
 
-var events = function(req, res) {
+var eventList = function(req, res) {
   var event = {
     title: 'Tässä ois kovakoodattu tapahtuma',
     description: 'oiskohan sielä kalijaa'
@@ -327,7 +329,24 @@ var events = function(req, res) {
   Event.findAll().then(function(events) {
     res.status(200).json(events);
   });
-}
+};
+
+var deleteEvent = function (req, res, next) {
+  console.log('poisteltasko vähä tapahtumia');
+};
+
+var addParticipation = function(req, res){
+  console.log('vois lisätä osallistumisen');
+  console.log(req.body);
+
+  var participation = {
+    eventId: req.body.eventid,
+    userId: req.body.userid
+  };
+  UserEvent.create(participation).success(function(){
+    console.log('userevent.create success');
+  });
+};
 
 
 module.exports = {
@@ -340,6 +359,8 @@ module.exports = {
   postForgot: postForgot,
   settings: settingsPage,
   scoreboard: scoreboardPage,
-  greetings: greetingsPage,
-  events: events
+  eventsPage: eventsPage,
+  eventList: eventList,
+  deleteEvent: deleteEvent,
+  addParticipation: addParticipation
 };
