@@ -47,7 +47,7 @@ var Person = React.createClass({
 var PersonList = React.createClass({
   getInitialState: function() {
     return getSate();
-  };
+  },
 
   componentDidMount: function() {
     var self = this;
@@ -56,8 +56,8 @@ var PersonList = React.createClass({
       success: function(res){
         self.setState({users: res})
       }
-    })
-  }
+    });
+  },
 
   render: function() {
         var people = this.props.data.map(function(person){

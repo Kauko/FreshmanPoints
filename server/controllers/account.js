@@ -304,27 +304,20 @@ var settingsPage = function(req, res) {
   res.sendFile(path.join(settings.staticAssets, '/index.html'), { root: settings.root });
 };
 
-<<<<<<< HEAD
 
 var scoreboardPage = function(req, res) {
     // Render index.html to allow application to handle routing
   res.sendFile(path.join(settings.staticAssets, '/index.html'), { root: settings.root });
 };
 
-var greetingsPage = function(req, res) {
-=======
+
 var eventsPage = function(req, res) {
->>>>>>> testings/tuomas
   // Render index.html to allow application to handle routing
   res.sendFile(path.join(settings.staticAssets, '/index.html'), { root: settings.root });
 };
 
-<<<<<<< HEAD
 
-var events = function(req, res) {
-=======
 var eventList = function(req, res) {
->>>>>>> testings/tuomas
   var event = {
     title: 'Tässä ois kovakoodattu tapahtuma',
     description: 'oiskohan sielä kalijaa'
@@ -366,7 +359,6 @@ module.exports = {
   postForgot: postForgot,
   settings: settingsPage,
   scoreboard: scoreboardPage,
-  events: events,
   eventsPage: eventsPage,
   eventList: eventList,
   deleteEvent: deleteEvent,
