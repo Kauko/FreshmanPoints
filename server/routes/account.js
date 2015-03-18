@@ -17,10 +17,10 @@ var routes = function(app) {
   app.post('/reset/:token', accountController.postReset);
   app.get('/signup', accountController.signup);
   app.get('/settings', accountController.settings);
-  app.get('/events', accountController.greetings);
-  app.get('/events.json', accountController.events);
+  app.get('/events', accountController.eventsPage);
+  app.get('/events.json', accountController.eventList);
 
-  app.delete('/events',  auth.isAuthenticated, accountController.deleteEvent);
+  app.delete('/events', auth.isAuthenticated, accountController.deleteEvent);
   app.post('/events', accountController.addParticipation);
 };
 
