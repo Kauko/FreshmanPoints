@@ -30,8 +30,16 @@ module.exports = {
     //console.log('exit getEvents');
   },
 
-  signup: function(callback){
+  deleteEvent: function(id){
+    console.log('todo: heitä serverille viesti että se poistaa tapahtuman');
+  },
+
+  signup: function(eventId, userId){
   	console.log('tähän pitäs tehä ilmottautumisjuttuja');
+    request
+      .post('/events')
+      .send({eventid: eventId, userid: userId})
+      .end();
   },
 
 };

@@ -13,6 +13,7 @@ var passport = require('passport');
 var db = require('../config/database');
 var User = db.user;
 var Event = db.event;
+var UserEvent = db.userEvent;
 var settings = require('../config/env/default');
 var auth = require('../auth');
 
@@ -320,7 +321,16 @@ var events = function(req, res) {
   Event.findAll().then(function(events) {
     res.status(200).json(events);
   });
-}
+};
+
+var deleteEvent = function (req, res, next) {
+  console.log('poisteltasko vähä tapahtumia');
+};
+
+var addParticipation = function(req, res){
+  console.log('vois lisätä osallistumisen');
+  console.log(req.body);
+};
 
 module.exports = {
   login: login,
@@ -332,5 +342,7 @@ module.exports = {
   postForgot: postForgot,
   settings: settingsPage,
   greetings: greetingsPage,
-  events: events
+  events: events,
+  deleteEvent: deleteEvent,
+  addParticipation: addParticipation
 };

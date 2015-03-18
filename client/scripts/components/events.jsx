@@ -3,7 +3,7 @@
 var React = require('react');
 var DefaultLayout = require('./layouts/default.jsx');
 var BS = require('react-bootstrap');
-var eventStore = require('../stores/events');
+var userStore = require('../stores/user');
 var eventActions = require('../actions/events');
 
 var LikeButton = React.createClass({
@@ -11,12 +11,14 @@ var LikeButton = React.createClass({
     return {clicked: false};
   },
   handleClick: function(event) {
-    eventActions.signup();
+    //this.props.hideItem(this.props.event.id);
+    eventActions.signup(this.props.event.id, this.props.user.id);
     this.setState({clicked: !this.state.clicked});    
   },
   render: function() {
+    var user = this.props.user;
     //var text = this.state.liked ? this.props.event.id : 'Et uskalla painaa tästä';
-    var text = this.state.clicked ? 'Oot ny ilmottautunu :)' : 'Ilmoittaudu';
+    var text = this.state.clicked ? 'Peruuta ilmoittautuminen' : 'Ilmoittaudu';
     return (
       <BS.Button onClick={this.handleClick}>
         {text}
@@ -30,7 +32,10 @@ var EventInfo = React.createClass({
         var showShit = true;
         var element;
         if (showShit){
-            element = <LikeButton event={this.props.event} />;
+            element = <LikeButton 
+                        event={this.props.event}
+                        user={this.props.user}
+                        hideItem = {this.props.hideItem} />;
         }
         return (
             <div className="EventInfoContainer">
@@ -44,10 +49,18 @@ var EventInfo = React.createClass({
                     <h3>{this.props.event.title}</h3>
                     <div>{this.props.event.description}</div>
                     {element}
+                    <form id="delete-form" action="/user?_method=DELETE" method="post" onSubmit={this.handleDestroy}>
+                      <button>Poista tapahtuma</button>
+                    </form>
                 </div>
             </div>
         );
-    }
+    },
+    handleDestroy: function(e) {
+    e.preventDefault();
+    var form = e.currentTarget;
+    userActions.destroy(form);
+  }
 });
 
 // var getState = function() {
@@ -58,12 +71,13 @@ var EventInfo = React.createClass({
 // };
 
 var EventInfoList = React.createClass({
-    //mixins: [eventStore.mixin],
+    //mixins: [eventStore.mixin],    
     getInitialState: function() {
-        //return getState();
-
         //laitetaan tämä aluksi tyhjäksi listaksi
-        return {events: []};
+        return {
+            events: [],
+            user: userStore.get()
+        };
     },
     componentDidMount: function(){
         var self = this;
@@ -76,11 +90,16 @@ var EventInfoList = React.createClass({
             }
         });
     },
+    hideItem: function(eventid){
+        eventActions.deleteEvent(eventid);
+        //this.setState({events: this.state.events.splice(eventid)});
+    },
     render: function(){
-        console.log('tehhään eveninfolist ');
+        //console.log('tehhään eveninfolist ');
         var stateevents = this.state.events;
-        console.log(stateevents)
+        //console.log(stateevents)
         var rows = []
+        var self = this;
         //tämä rivi tekee tapahtumat kovakoodauksen perusteella
         //this.props.events.forEach(function(event){    
 
@@ -92,7 +111,11 @@ var EventInfoList = React.createClass({
             <div>
             <div className="ListTitle"><h1>Täs ois näitä tapahtumia</h1></div>
             {this.state.events.map(function(event){
-                return <EventInfo event={event} key={event.id} />
+                return <EventInfo 
+                    event={event} 
+                    user={self.state.user}
+                    key={event.id} 
+                    hideItem = {self.hideItem} />
             })}
            </div>             
         );
