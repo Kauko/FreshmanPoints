@@ -304,6 +304,7 @@ var settingsPage = function(req, res) {
   res.sendFile(path.join(settings.staticAssets, '/index.html'), { root: settings.root });
 };
 
+<<<<<<< HEAD
 
 var scoreboardPage = function(req, res) {
     // Render index.html to allow application to handle routing
@@ -311,12 +312,19 @@ var scoreboardPage = function(req, res) {
 };
 
 var greetingsPage = function(req, res) {
+=======
+var eventsPage = function(req, res) {
+>>>>>>> testings/tuomas
   // Render index.html to allow application to handle routing
   res.sendFile(path.join(settings.staticAssets, '/index.html'), { root: settings.root });
 };
 
+<<<<<<< HEAD
 
 var events = function(req, res) {
+=======
+var eventList = function(req, res) {
+>>>>>>> testings/tuomas
   var event = {
     title: 'Tässä ois kovakoodattu tapahtuma',
     description: 'oiskohan sielä kalijaa'
@@ -337,6 +345,14 @@ var deleteEvent = function (req, res, next) {
 var addParticipation = function(req, res){
   console.log('vois lisätä osallistumisen');
   console.log(req.body);
+
+  var participation = {
+    eventId: req.body.eventid,
+    userId: req.body.userid
+  };
+  UserEvent.create(participation).success(function(){
+    console.log('userevent.create success');
+  });
 };
 
 
@@ -350,8 +366,9 @@ module.exports = {
   postForgot: postForgot,
   settings: settingsPage,
   scoreboard: scoreboardPage,
-  greetings: greetingsPage,
   events: events,
+  eventsPage: eventsPage,
+  eventList: eventList,
   deleteEvent: deleteEvent,
   addParticipation: addParticipation
 };
