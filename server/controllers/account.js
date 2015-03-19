@@ -329,15 +329,58 @@ var deleteEvent = function (req, res, next) {
 
 var addParticipation = function(req, res){
   console.log('vois lisätä osallistumisen');
-  console.log(req.body);
+  //console.log(req.body);
 
-  var participation = {
-    eventId: req.body.eventid,
-    userId: req.body.userid
+  //kusee jos ei oo kirjautunu sisään, pitäs ehkä tehä jotenki muuten
+  if (typeof req.body.userid === 'undefined'){
+    res.status(401);
   };
-  UserEvent.create(participation).success(function(){
-    console.log('userevent.create success');
-  });
+  
+  UserEvent.count(
+    { where: ['"eventId" = ? AND "userId" = ?', req.body.eventid, req.body.userid] }
+  ).then(function(count){
+    console.log(count);
+
+    if(count > 0){      
+      console.log('pitäs poistaa suoritukset');
+      UserEvent.findAll({
+        where: ['"eventId" = ? AND "userId" = ?', req.body.eventid, req.body.userid],
+        attributes: ['id']
+      }).success(function(userevents){
+
+        console.log('nämä poistetaan');
+
+        userevents.forEach(function(userevent){
+          console.log(userevent.dataValues.id);
+          UserEvent.destroy(userevent.dataValues.id);
+        });
+      });
+
+//sequelizen omia testejä
+//  it('still allows simple arrays lookups', function (done) {
+// +      this.User.find({
+// +        where: ["id IN (?) OR id IN (?)", [1, 2], [3, 4]]
+// +      }).on('sql', function(sql) {
+// +        expect(sql).to.contain("id IN (1, 2) OR id IN (3, 4)")
+// +        done()
+// +      })
+// +    })
+
+
+    }else{
+      //tehdään uusi
+      var participation = {
+        eventId: req.body.eventid,
+        userId: req.body.userid
+      };
+      UserEvent.create(participation).success(function(){
+        console.log('userevent.create success');
+        res.status(200);
+      });
+    }
+  })
+
+  
 };
 
 module.exports = {
