@@ -310,6 +310,11 @@ var eventsPage = function(req, res) {
 };
 
 var eventList = function(req, res) {
+
+  var returnStuff = function(list){
+    res.status(200).json(list);
+  };
+  
   var event = {
     title: 'Tässä ois kovakoodattu tapahtuma',
     description: 'oiskohan sielä kalijaa'
@@ -317,10 +322,46 @@ var eventList = function(req, res) {
   console.log('Otas tästä vähän tapahtumia');
   //res.status(200).json(event);
   //Event.create(event)
+  //console.log(req.body.userid);
 
-  Event.findAll().then(function(events) {
-    res.status(200).json(events);
+  Event.findAll().success(function(events) {
+    var eventlistjson = [];
+    var self = this;
+    //console.log(events);
+    //res.status(200).json(events);
+    events.forEach(function(event){
+      var oneEvent = event.dataValues;
+
+      UserEvent.count({ 
+        where: {
+          userId: req.body.userid,
+          eventId: event.id
+        } 
+      }).success(function(count){
+        if(count > 0){
+          oneEvent.hasSignedUp = true;
+        }else{
+          oneEvent.hasSignedUp = false;
+        }
+        console.log('hoiss');
+        //console.log(oneEvent);
+        eventlistjson.push(oneEvent);
+        console.log(eventlistjson);
+      }).then(function(){
+        console.log('tää pitäs olla viimenen');
+        returnStuff(eventlistjson);
+      });
+    });
+
+    //ei toimi näin koska async
+    // console.log('nyt pitäis palauttaa juttuja');
+    // console.log(eventlistjson);
+    // res.status(200).json(eventlistjson);
   });
+
+    // console.log('nyt pitäis palauttaa juttuja');
+    // console.log(eventlistjson);
+    // res.status(200).json(eventlistjson);
 };
 
 var deleteEvent = function (req, res, next) {
@@ -328,10 +369,8 @@ var deleteEvent = function (req, res, next) {
 };
 
 var addParticipation = function(req, res){
-  console.log('vois lisätä osallistumisen');
   //console.log(req.body);
-
-  //kusee jos ei oo kirjautunu sisään, pitäs ehkä tehä jotenki muuten
+  //kusee jos ei oo kirjautunu sisään, tarkistus pitäs ehkä tehä jotenki järkevästi
   if (typeof req.body.userid === 'undefined'){
     res.status(401);
   };
@@ -349,23 +388,12 @@ var addParticipation = function(req, res){
       }).success(function(userevents){
 
         console.log('nämä poistetaan');
-
         userevents.forEach(function(userevent){
           console.log(userevent.dataValues.id);
           UserEvent.destroy(userevent.dataValues.id);
         });
+        res.status(200);
       });
-
-//sequelizen omia testejä
-//  it('still allows simple arrays lookups', function (done) {
-// +      this.User.find({
-// +        where: ["id IN (?) OR id IN (?)", [1, 2], [3, 4]]
-// +      }).on('sql', function(sql) {
-// +        expect(sql).to.contain("id IN (1, 2) OR id IN (3, 4)")
-// +        done()
-// +      })
-// +    })
-
 
     }else{
       //tehdään uusi
@@ -374,13 +402,10 @@ var addParticipation = function(req, res){
         userId: req.body.userid
       };
       UserEvent.create(participation).success(function(){
-        console.log('userevent.create success');
         res.status(200);
       });
     }
-  })
-
-  
+  })  
 };
 
 module.exports = {
