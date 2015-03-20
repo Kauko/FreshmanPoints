@@ -25,13 +25,15 @@ var Defaults = {
       title: 'hoiss',
       description: 'tää on se defaulttijuttu storesta',
       image: 'images/KappaHD.jpg',
-      id: '1'
+      id: '1',
+      date: '1999-01-01'
     },
     {
       title: 'voisko',
       description: 'tämä vaan nyt alkaa yhtäkkiä toimimaan',
       image: 'images/KappaHD.jpg',
-      id: '2'
+      id: '2',
+      date: '2020-10-10'
     }
   ]
 

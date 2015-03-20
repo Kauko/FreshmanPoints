@@ -36,6 +36,8 @@ var DefaultComponent = React.createClass({
             </div>
             <div className="content">
               {this.props.children}
+
+              
             </div>
           </div>
         </div>

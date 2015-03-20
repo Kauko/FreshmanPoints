@@ -9,6 +9,10 @@ var EventModel = function(sequelize, DataTypes) {
     description: {
       type: DataTypes.STRING
     },
+    date: {
+      type: DataTypes.DATE
+      
+    },
     image: {
       type: DataTypes.STRING,
       defaultValue: 'images/KappaHD.jpg'
