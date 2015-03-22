@@ -47,8 +47,8 @@ var NavbarComponent = React.createClass({
         <li>
           <Link url="/scoreboard"> scoreboard </Link>
         </li>
-        <li className="greetings">
-          <Link url="/greetings">greetings</Link>
+        <li className="events">
+          <Link url="/events">events</Link>
         </li>
       </ul>
       /* jshint ignore:end */
