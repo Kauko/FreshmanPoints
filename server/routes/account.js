@@ -17,11 +17,6 @@ var routes = function(app) {
   app.post('/reset/:token', accountController.postReset);
   app.get('/signup', accountController.signup);
   app.get('/settings', accountController.settings);
-  app.get('/events', accountController.eventsPage);
-  app.post('/events.json', accountController.eventList);
-
-  app.delete('/events', auth.isAuthenticated, accountController.deleteEvent);
-  app.post('/events', accountController.addParticipation);
 };
 
 module.exports = routes;

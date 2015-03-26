@@ -28,6 +28,15 @@ var UserModel = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
     },
 
+    isFreshman: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    canAccept: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+
     // Reset token
     resetPasswordToken: DataTypes.STRING,
     resetPasswordExpires: DataTypes.DATE

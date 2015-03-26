@@ -36,7 +36,6 @@ module.exports = {
   },
 
   signup: function(eventId, userId){
-  	console.log('tähän pitäs tehä ilmottautumisjuttuja');
     request
       .post('/events')
       .send({eventid: eventId, userid: userId})
