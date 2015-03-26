@@ -8,6 +8,7 @@ var userActions = require('../../actions/user');
 var getState = function() {
   return {
     user: userStore.get()
+
   };
 };
 
@@ -15,9 +16,11 @@ var SettingsComponent = React.createClass({
   mixins: [userStore.mixin],
   getInitialState: function() {
     return getState();
+    
   },
   render: function() {
     var user = this.state.user;
+console.log(user);
 
     return (
       /* jshint ignore:start */

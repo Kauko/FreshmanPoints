@@ -6,6 +6,51 @@ var BS = require('react-bootstrap');
 var eventStore = require('../stores/events');
 var eventActions = require('../actions/events');
 
+var userStore = require('../stores/user');
+var userActions = require('../actions/user');
+
+
+var jwt = require('jsonwebtoken');
+
+
+
+
+
+
+var MenneetTapahtumat = React.createClass({
+
+    render: function(){
+      
+        return (
+           
+           <BS.PageHeader>Menneet tapahtumat:</BS.PageHeader>
+
+        );
+    }
+});
+
+
+
+var TulevatTapahtumat = React.createClass({
+
+    render: function(){
+      
+        return (
+           
+            <BS.PageHeader>Tulevat tapahtumat:</BS.PageHeader>
+            
+        );
+    }
+});
+
+
+
+
+
+
+
+
+
 
 var LikeButton = React.createClass({
   getInitialState: function() {
@@ -19,11 +64,23 @@ var LikeButton = React.createClass({
 
   render: function() {
     //var text = this.state.liked ? this.props.event.id : 'Et uskalla painaa tästä';
-    var text = 'Ilmoittaudu';
+    var text = 'Delete';
     return (
+      <div>
       <BS.Button onClick={this.handleClick}>
         {text}
       </BS.Button>
+
+      <BS.DropdownButton bsStyle="info" title="Ilmoittautuneet">
+                    
+                <BS.Input type="checkbox" label="Checkbox" />
+
+                <BS.Button>Hyväksy</BS.Button>
+
+
+                </BS.DropdownButton>
+
+                </div>
     );
   }
 });
@@ -46,8 +103,8 @@ var Tekokomponentti = React.createClass({
 
     return (
 
-        <div>
-    <BS.Panel header="Lisää teko" bsStyle="info">
+      <div>
+      <BS.Panel header="Lisää teko" bsStyle="info">
       
       <BS.DropdownButton title="Dropdown">
         <BS.MenuItem eventKey="1">Dropdown link</BS.MenuItem>
@@ -61,10 +118,21 @@ var Tekokomponentti = React.createClass({
 });
 
 
-
+var getState = function() {
+  return {
+    user: userStore.get()
+  };
+};
 
 var EventInfo = React.createClass({    
     
+
+
+   mixins: [userStore.mixin],
+  getInitialState: function() {
+    return getState();
+    
+  },
 
 
     deleteHandler: function(event) {
@@ -74,15 +142,24 @@ var EventInfo = React.createClass({
 
 
 
-
     render: function() {
         
-    
+   
+
+        var user = this.state.user;
+        console.log(this.state.user);
+        
+
         var showShit = true;
+
         var element;
-        if (showShit){
-            element = <LikeButton event={this.props.event} />;
-        }
+
+
+        element = <LikeButton event={this.props.event} />;
+     
+
+
+
         return (
            
             <BS.Panel bsStyle="primary" header={this.props.event.title + " " + this.props.event.date} >
@@ -94,34 +171,18 @@ var EventInfo = React.createClass({
 
                 {this.props.event.description} 
 
+
                 {element}
 
 
-                <BS.Button onClick={this.deleteHandler}>
-                       
-                Delete 
-                   
-                </BS.Button>
-
-                    
-
-                <p>
-
-                <BS.DropdownButton bsStyle="info" title="Ilmoittautuneet">
-                    
-                <BS.Input type="checkbox" label="Checkbox" />
-
-                <BS.Button>Hyväksy</BS.Button>
-
-
-                </BS.DropdownButton>
-                    
-                </p>
-
-
-                </BS.Panel>
+            </BS.Panel>
         );
-    }
+  
+
+
+
+
+  }
 });
 
 var getState = function() {
@@ -146,6 +207,8 @@ var EventInfoList = React.createClass({
 
     getInitialState: function() {
         return getState();
+        
+
     },
     componentDidMount: function(){
         var self = this;
@@ -168,11 +231,8 @@ var EventInfoList = React.createClass({
         var stateevents = this.state.events;
         console.log(stateevents)
 
-        var d = new Date();
-        var n = d.toISOString();
-
-
-
+        var today = new Date();
+       
 
 
         var rows = []
@@ -240,18 +300,50 @@ var EventInfoList = React.createClass({
 
 
             
-            <div className="ListTitle"><BS.PageHeader>Tässä on vaikka tapahtumia</BS.PageHeader>
+            <div className="ListTitle">
            
-            {d}
+            
+
+
+            <div>
+
+            <TulevatTapahtumat />
 
             {this.state.events.map(function(event){
 
 
-                return <EventInfo event={event} key={event.id} />
+          
+
+            return <EventInfo event={event} key={event.id} />
+                
+            
+
+
+              })}
+            
+            </div>
 
 
 
-            })}
+
+
+            
+            <div>
+
+            <MenneetTapahtumat />
+
+            {this.state.events.map(function(event){
+
+           
+
+            return <EventInfo event={event} key={event.id} />
+                
+
+              })}
+            
+            </div>
+
+
             </div>
 
 
@@ -266,22 +358,7 @@ var EventInfoList = React.createClass({
   }
 });
 
-//nämä on eventinfolistin returnissa olleita testailuja
 
-// <ul>
-//             <EventInfo event={{title:'qw',description:'q'}} />
-//             <EventInfo event={{title:'qw',description:'q'}} />
-//             </ul>  
-
-// <table> {/*tähän on varmaan järkevämpiki ratkasu*/}
-            //     <thead>
-            //         <div className="ListTitle"><h1>Täs ois näitä tapahtumia</h1>
-            //         <BS.Button> bootstrapin nappula</BS.Button>
-            //         <button>normi</button>
-            //         </div>
-            //     </thead>
-            //     <tbody>{rows}</tbody>
-            // </table>
 
  
 //module.exports = EventInfo;
