@@ -3,12 +3,7 @@
 var React = require('react');
 var DefaultLayout = require('./layouts/default.jsx');
 var BS = require('react-bootstrap');
-
-
-var data = [
-  {First: 'Nadir', last: 'Derdour', points: '-9000'},
-  {First: 'Aapo', last: 'Salo', points: '20'},
-]
+var scoreboardActions = require('../actions/scoreboard');
 
 var ScoreboardComponent = React.createClass({
   render: function() {
@@ -46,7 +41,10 @@ var Person = React.createClass({
 
 var PersonList = React.createClass({
   getInitialState: function() {
-    return getSate();
+    return {
+      userEvents = [],
+      user: userStore.get()
+    };
   },
 
   componentDidMount: function() {
@@ -54,20 +52,23 @@ var PersonList = React.createClass({
 
     eventActions.getEvents({
       success: function(res){
-        self.setState({users: res})
+        self.setState({userEvents: res})
       }
     });
   },
 
   render: function() {
-        var people = this.props.data.map(function(person){
-          return <Person first={person.first} last={person.last} person={person.points} />
+        var people = this.props.userEvents.map(function(person){
+          return <Person first={person.first} last={person.last}/>
         });
         return (
           <div>
           {people}
           </div>
           )
+  }
+  _onChange: function() {
+    this.setState(getState());
   }
 })
 
