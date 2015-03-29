@@ -72,22 +72,6 @@ var PersonList = React.createClass({
   }
 })
 
-<<<<<<< HEAD
-var ScoreList = React.createClass({
-  render:function(){
-    var people = this.props.data.map(function(person){
-      return <Person first={person.first} last={person.last} points={person.points} />
-    })
-  }
-})
 
-var data = [
-  {
-    first:'Nadir', last='Derdour' points = '-9000'
-    first:'dsadr', last='as' points = '123' 
-  }
-]
-=======
->>>>>>> fec1ffb8951c04627a020a7202eed120896c6524
 
 module.exports = ScoreboardComponent;
