@@ -15,15 +15,16 @@ module.exports = {
   //   console.log('exit setEvents');
   // },
 
-  getEvents: function(callback){
+  getEvents: function(userId, callback){
     //console.log('getEvents')
     var self = this;
     request
-      .get('/events.json')
+      .post('/events.json')
       .type('json')
+      .send({userid: userId})
       .end(function(res){ 
-        //console.log('tässä ois tää serverin vastaus');
-        //console.log(res);
+        console.log('tässä ois tää serverin vastaus');
+        console.log(res);
         //self.setEvents(res.body); 
         callback.success(res.body);     
       });

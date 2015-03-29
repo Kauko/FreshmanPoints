@@ -81,8 +81,7 @@ var EventInfoList = React.createClass({
     },
     componentDidMount: function(){
         var self = this;
-
-        eventActions.getEvents({
+        eventActions.getEvents(self.state.user.id,{
             success: function (res) {
                 //console.log('oisko tää: callbackfunktio');
                 //console.log(res);
