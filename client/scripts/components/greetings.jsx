@@ -17,37 +17,6 @@ var jwt = require('jsonwebtoken');
 
 
 
-var MenneetTapahtumat = React.createClass({
-
-    render: function(){
-      
-        return (
-           
-           <BS.PageHeader>Menneet tapahtumat:</BS.PageHeader>
-
-        );
-    }
-});
-
-
-
-var TulevatTapahtumat = React.createClass({
-
-    render: function(){
-      
-        return (
-           
-            <BS.PageHeader>Tulevat tapahtumat:</BS.PageHeader>
-            
-        );
-    }
-});
-
-
-
-
-
-
 
 
 
@@ -124,6 +93,9 @@ var getState = function() {
   };
 };
 
+
+
+
 var EventInfo = React.createClass({    
     
 
@@ -139,7 +111,9 @@ var EventInfo = React.createClass({
         this.props.onDelete(this.props.event);
     },
 
-
+ getDate: function() {
+        return this.props.event.date;
+    },
 
 
     render: function() {
@@ -155,9 +129,11 @@ var EventInfo = React.createClass({
         var element;
 
 
+      //  if(user.role === 'admin') {
+
         element = <LikeButton event={this.props.event} />;
      
-
+       // }
 
 
         return (
@@ -194,7 +170,7 @@ var getState = function() {
 
 
 var EventInfoList = React.createClass({
-    //mixins: [eventStore.mixin],
+    mixins: [eventStore.mixin],
    
 
     deletePost: function(event) {
@@ -227,21 +203,37 @@ var EventInfoList = React.createClass({
         //this.setState({events: eventStore.get});
     },
     render: function(){
+
         console.log('tehhään eveninfolist ');
         var stateevents = this.state.events;
         console.log(stateevents)
 
         var today = new Date();
+        var n = today.toJSON();
+
+
+        var vanhat = []
+        var uudet = []
+
+
+        
+        stateevents.forEach(function(event, i) {
+
+          if (n > stateevents[i].date) {vanhat[i] = <EventInfo event={event} key={event.title} />;
+
+              console.log(stateevents[i].date);
+
+                }
+
+            else {uudet[i] = <EventInfo event={event} key={event.title} />;}
+
+
+            console.log(stateevents[i].date);
+
+        })
+
+
        
-
-
-        var rows = []
-        //tämä rivi tekee tapahtumat kovakoodauksen perusteella
-        //this.props.events.forEach(function(event){    
-
-        //this.state.events.forEach(function(event){
-        //     {/*rows.push(<div>asd</div>);    //test*/}
-        //     //rows.push(<EventInfo event={event} key={event.title} />);
         // });
         return(     
             <DefaultLayout>
@@ -302,51 +294,26 @@ var EventInfoList = React.createClass({
             
             <div className="ListTitle">
            
-            
-
-
             <div>
 
-            <TulevatTapahtumat />
+            <BS.PageHeader>Menneet tapahtumat:</BS.PageHeader>
 
-            {this.state.events.map(function(event){
+            {vanhat}
 
+            </div>
 
           
 
-            return <EventInfo event={event} key={event.id} />
-                
-            
-
-
-              })}
-            
-            </div>
-
-
-
-
-
             
             <div>
 
-            <MenneetTapahtumat />
+            <BS.PageHeader>Tulevat tapahtumat:</BS.PageHeader>
 
-            {this.state.events.map(function(event){
-
-           
-
-            return <EventInfo event={event} key={event.id} />
-                
-
-              })}
-            
-            </div>
-
+            {uudet}
 
             </div>
 
-
+            </div>
             
           
            </DefaultLayout>          
