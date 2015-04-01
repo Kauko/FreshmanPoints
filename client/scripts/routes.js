@@ -14,6 +14,7 @@ var ForgotPage =
   React.createFactory(require('./components/account/forgot.jsx'));
 var SettingsPage = 
   React.createFactory(require('./components/account/settings.jsx'));
+var EventsPage = React.createFactory(require('./components/events.jsx'));
 
 var render = function(Page) {
   React.render(new Page(), document.getElementById('app-wrapper'));
@@ -76,13 +77,22 @@ var settings = function() {
   render(SettingsPage);
 };
 
+var events = function() {
+  render(EventsPage);
+
+  //var MyElement = new GreetingsPage({events: Events});
+  //React.render(MyElement, document.getElementById('app-wrapper'));
+};
+
 var routes = {
   '/login': login,
   '/forgot': forgot,
   '/reset/:token': reset,
   '/signup': signup,
-  '/settings': settings,
-  '/': index
+  '/settings': settings,  
+  '/': index,
+  '/events': events
 };
 
 module.exports = routes;
+

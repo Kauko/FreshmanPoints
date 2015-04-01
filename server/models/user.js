@@ -24,6 +24,18 @@ var UserModel = function(sequelize, DataTypes) {
     lastName: {
       type: DataTypes.STRING,
     },
+    nickName: {
+      type: DataTypes.STRING,
+    },
+
+    isFreshman: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    canAccept: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
 
     // Reset token
     resetPasswordToken: DataTypes.STRING,
@@ -44,6 +56,11 @@ var UserModel = function(sequelize, DataTypes) {
       }
     }
   });
+
+  //User.belongsToMany(Event);
+
+  //User.sync({ force:true });  
+  //User.sync();  
 
   // Run before validating any data
   User.hook('beforeValidate', function(user, done) {
