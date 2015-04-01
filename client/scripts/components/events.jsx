@@ -17,7 +17,6 @@ var LikeButton = React.createClass({
   },
   render: function() {
     var user = this.props.user;
-    //var text = this.state.liked ? this.props.event.id : 'Et uskalla painaa tästä';
     var text = this.state.signedup ? 'Peruuta ilmoittautuminen' : 'Ilmoittaudu';
     return (
       <BS.Button onClick={this.handleClick}>
@@ -40,12 +39,9 @@ var EventInfo = React.createClass({
         return (
             <div className="EventInfoContainer">
                 <div className="box">
-                    <img src={this.props.event.image} height="150" width="150" />
-                    {/*<img src="images/KappaHD.jpg" height="150" width="150" />  */}               
+                    <img src={this.props.event.image} height="150" width="150" />             
                 </div>
                 <div className="box">
-                    {/*<h3>Täs ois tää tapahtuma</h3>
-                    <div>Sielon kaikkia hienoja juttuja</div>*/}
                     <h3>{this.props.event.title}</h3>
                     <div>{this.props.event.description}</div>
                     {element}
@@ -56,6 +52,7 @@ var EventInfo = React.createClass({
             </div>
         );
     },
+    //TODO: tapahtuman poisto jos käyttäjällä siihen oikeus
     handleDestroy: function(e) {
     e.preventDefault();
     var form = e.currentTarget;
@@ -81,7 +78,7 @@ var EventInfoList = React.createClass({
     },
     componentDidMount: function(){
         var self = this;
-        console.log(this.state.user);
+        //console.log(this.state.user);
         eventActions.getEvents(self.state.user.id,{
             success: function (res) {
                 //console.log('oisko tää: callbackfunktio');
@@ -100,13 +97,7 @@ var EventInfoList = React.createClass({
         //console.log(stateevents)
         var rows = []
         var self = this;
-        //tämä rivi tekee tapahtumat kovakoodauksen perusteella
-        //this.props.events.forEach(function(event){    
 
-        //this.state.events.forEach(function(event){
-        //     {/*rows.push(<div>asd</div>);    //test*/}
-        //     //rows.push(<EventInfo event={event} key={event.title} />);
-        // });
         return(     
             <div>
             <div className="ListTitle"><h1>Täs ois näitä tapahtumia</h1></div>
@@ -121,7 +112,7 @@ var EventInfoList = React.createClass({
         );
     },
     _onChange: function() {
-    console.log('_onChange');
+    //console.log('_onChange');
     this.setState(getState());
   }
 });

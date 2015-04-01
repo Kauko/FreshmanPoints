@@ -5,6 +5,8 @@ var request = require('superagent');
 
 module.exports = {
 
+  // pitäs muuttaa eventlist tallentumaan storeen
+
   // setEvents: function(events){
   //   console.log('setEvents, events: ');
   //   console.log(events);

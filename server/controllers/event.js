@@ -24,7 +24,7 @@ var eventList = function(req, res) {
 
   //tämä tarkistus pitää muuttaa jotenki järkeväksi 
   if (typeof req.body.userid === 'undefined'){
-    console.log('ei olla kirjauduttu');
+    console.log('Event Controller :: Ei olla kirjauduttu');
     Event.findAll()
       .success(function(events){
         res.status(200).json(events);
@@ -54,7 +54,8 @@ var eventList = function(req, res) {
 };
 
 var deleteEvent = function (req, res, next) {
-  console.log('poisteltasko vähä tapahtumia');
+  //TODO: tapahtuman poisto
+  //console.log('poisteltasko vähä tapahtumia');
 };
 
 var addParticipation = function(req, res){
