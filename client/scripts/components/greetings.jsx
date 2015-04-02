@@ -10,12 +10,8 @@ var userStore = require('../stores/user');
 var userActions = require('../actions/user');
 
 
+
 var jwt = require('jsonwebtoken');
-
-
-
-
-
 
 
 
@@ -36,7 +32,7 @@ var LikeButton = React.createClass({
     var text = 'Delete';
     return (
       <div>
-      <BS.Button onClick={this.handleClick}>
+      <BS.Button bsStyle="danger" onClick={this.handleClick}>
         {text}
       </BS.Button>
 
@@ -44,7 +40,7 @@ var LikeButton = React.createClass({
                     
                 <BS.Input type="checkbox" label="Checkbox" />
 
-                <BS.Button>Hyväksy</BS.Button>
+                <BS.Button bsStyle="success">Hyväksy</BS.Button>
 
 
                 </BS.DropdownButton>
@@ -107,6 +103,7 @@ var EventInfo = React.createClass({
   },
 
 
+
     deleteHandler: function(event) {
         this.props.onDelete(this.props.event);
     },
@@ -118,23 +115,18 @@ var EventInfo = React.createClass({
 
     render: function() {
         
-   
 
-        var user = this.state.user;
-        console.log(this.state.user);
-        
 
         var showShit = true;
 
         var element;
 
 
-      //  if(user.role === 'admin') {
+ 
 
         element = <LikeButton event={this.props.event} />;
      
-       // }
-
+   
 
         return (
            
@@ -154,8 +146,6 @@ var EventInfo = React.createClass({
             </BS.Panel>
         );
   
-
-
 
 
   }
@@ -216,7 +206,6 @@ var EventInfoList = React.createClass({
         var uudet = []
 
 
-        
         stateevents.forEach(function(event, i) {
 
           if (n > stateevents[i].date) {vanhat[i] = <EventInfo event={event} key={event.title} />;
@@ -233,19 +222,19 @@ var EventInfoList = React.createClass({
         })
 
 
+
+
        
-        // });
         return(     
+
             <DefaultLayout>
 
 
-           
-
-            
 
             <div className="ScoreboardPaske">
 
-            <BS.PageHeader>Tässä ois vaikka Scoreboard-kikkare tai jotain muuta, emt lol</BS.PageHeader>
+            <BS.Panel header="Scoreboardpaske" bsStyle='danger'>
+
 
             <BS.Table striped bordered condensed hover>
       <thead>
@@ -287,32 +276,48 @@ var EventInfoList = React.createClass({
       </tbody>
     </BS.Table>
 
+            </BS.Panel>
+
             </div>
 
 
-
+            
             
             <div className="ListTitle">
            
+
+            
+
             <div>
 
-            <BS.PageHeader>Menneet tapahtumat:</BS.PageHeader>
+            <BS.Panel header='Menneet tapahtumat' bsStyle='info'>
+
+      
 
             {vanhat}
 
+              </BS.Panel>
+            
             </div>
 
-          
+            
 
             
             <div>
 
-            <BS.PageHeader>Tulevat tapahtumat:</BS.PageHeader>
+
+            <BS.Panel header='Tulevat tapahtumat' bsStyle='success'>
+
+       
 
             {uudet}
 
+             </BS.Panel>
             </div>
 
+
+
+          
             </div>
             
           

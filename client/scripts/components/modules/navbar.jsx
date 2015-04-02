@@ -22,32 +22,19 @@ var NavbarComponent = React.createClass({
     var user = this.props.user;
     var navLinks = user.loggedIn ? (
       
-        
-        /*
-        <ul className="nav-list pull-right">
-        <li className="nav-item">
-          Hello {user.firstName ? user.firstName : user.email}
-        </li>
-        <li className="nav-item">
-          <Link url="/settings">My Account</Link>
-        </li>
-        <li className="nav-item">
-          <Link url="/logout" onClick={this.handleLogout}>Logout</Link>
-        </li>
-        <li className="nav-item">
-          <Link url="/greetings">Greetings</Link>
-        </li>
-      </ul>*/
       
       
-    <BS.Navbar brand="Freshman Points -tsydeemi" right eventKey={0} inverse toggleNavKey={0}>
+      
+    <BS.Navbar brand='Freshman Points -tsydeemi' href="/" inverse toggleNavKey={0}>
 
 
-      <BS.Nav>
-
-        <BS.NavItem eventKey={0} href="/">Home</BS.NavItem>
+      <BS.Nav collapseable right eventKey={0}>
 
         <BS.NavItem>Hello {user.firstName ? user.firstName : user.email}</BS.NavItem>
+
+        <BS.NavItem eventKey={0} active href="/">Home</BS.NavItem>
+
+        
 
         <BS.NavItem eventKey={1} href="/settings">My Account</BS.NavItem>
      
@@ -58,6 +45,8 @@ var NavbarComponent = React.createClass({
       </BS.Nav>
 
 
+
+
     </BS.Navbar>
       
 
@@ -65,30 +54,14 @@ var NavbarComponent = React.createClass({
     ) : (
      
 
-/*
 
-        <ul>
-        <li>
-          <Link url="/login">Login</Link>
-        </li>
-        <li>
-          <Link url="/signup">Create Account</Link>
-        </li>
+
+    <BS.Navbar brand='Freshman Points -tsydeemi' href="/" inverse toggleNavKey={0}>
+
+
+      <BS.Nav collapseable right eventKey={0}>
       
-      <li>
-          <Link url="/greetings">Greetings</Link>
-        </li>
-        </ul>
-
-
-*/
-
-    <BS.Navbar brand="Freshman Points -tsydeemi" right eventKey={0} inverse toggleNavKey={0}>
-
-
-      <BS.Nav>
-      
-        <BS.NavItem eventKey={0} href="/">Home</BS.NavItem>
+        <BS.NavItem eventKey={0} active href="/">Home</BS.NavItem>
 
         <BS.NavItem eventKey={1} href="/login">Login</BS.NavItem>
       
@@ -119,8 +92,6 @@ var NavbarComponent = React.createClass({
        
       
     );
-
-
 
 
 
