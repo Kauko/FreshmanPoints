@@ -3,16 +3,15 @@ var request = require('superagent');
 
 module.exports = {
 
-	getUsers: function(callback) {
+	getUserEvents: function(userId, callback) {
 		var self = this;
 		request
-		.get('/userevents.json')
-		.type('json')
-		.end(function(this.refs){
-			callback.success(res.body);
-		});
-		},
+			.get('/userevents.json')
+			.type('json')
+			.send({userid: userID})
+			.end(function(refs){
+				callback.success(res.body);
+			});
+		},	
+};
 
-		
-	}
-}

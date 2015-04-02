@@ -43,7 +43,7 @@ var Person = React.createClass({
 var PersonList = React.createClass({
   getInitialState: function() {
     return {
-      userEvents = [],
+      userEvents: [],
       user: userStore.get()
     };
   },
@@ -67,7 +67,7 @@ var PersonList = React.createClass({
           {people}
           </div>
           )
-  }
+  },
   _onChange: function() {
     this.setState(getState());
   }

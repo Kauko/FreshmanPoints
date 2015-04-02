@@ -302,13 +302,9 @@ var settingsPage = function(req, res) {
   res.sendFile(path.join(settings.staticAssets, '/index.html'), { root: settings.root });
 };
 
-
 var scoreboardPage = function(req, res) {
-    // Render index.html to allow application to handle routing
   res.sendFile(path.join(settings.staticAssets, '/index.html'), { root: settings.root });
 };
-
-
 
 module.exports = {
   login: login,
@@ -318,6 +314,6 @@ module.exports = {
   reset: reset,
   forgot: forgot,
   postForgot: postForgot,
-  scoreboard: scoreboardPage,
-  settings: settingsPage
+  settings: settingsPage,
+  scoreboard: scoreboardPage
 };
