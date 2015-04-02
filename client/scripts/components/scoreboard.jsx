@@ -11,7 +11,8 @@ var ScoreboardComponent = React.createClass({
       /* jshint ignore:start */
       <DefaultLayout>
         <BS.Table className="shittable">
-          <PersonList data={this.props.data} />
+          <ScoreList data = {this.props.data} />
+          <BS.Button bsStyle="primary">Primary</BS.Button>
         </BS.Table>
       </DefaultLayout>
       /* jshint ignore:end */
@@ -71,6 +72,7 @@ var PersonList = React.createClass({
     this.setState(getState());
   }
 })
+
 
 
 module.exports = ScoreboardComponent;
