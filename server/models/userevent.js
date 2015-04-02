@@ -2,7 +2,8 @@
 
 var UserEventModel = function(sequelize, DataTypes) {
   var UserEvent = sequelize.define('userEvent', {
-    acceptDate: DataTypes.DATE,
+    confirmDate: DataTypes.DATE,
+    confirmUserId: DataTypes.INTEGER,
     userId: {
      	type: DataTypes.INTEGER,
         references: 'users', // <<< Note, its table's name, not object name

@@ -5,6 +5,8 @@ var request = require('superagent');
 
 module.exports = {
 
+  // pitäs muuttaa eventlist tallentumaan storeen
+
   // setEvents: function(events){
   //   console.log('setEvents, events: ');
   //   console.log(events);
@@ -36,7 +38,6 @@ module.exports = {
   },
 
   signup: function(eventId, userId){
-  	console.log('tähän pitäs tehä ilmottautumisjuttuja');
     request
       .post('/events')
       .send({eventid: eventId, userid: userId})

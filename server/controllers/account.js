@@ -12,8 +12,6 @@ var nodemailer = require('nodemailer');
 var passport = require('passport');
 var db = require('../config/database');
 var User = db.user;
-var Event = db.event;
-var UserEvent = db.userEvent;
 var settings = require('../config/env/default');
 var auth = require('../auth');
 
@@ -311,111 +309,6 @@ var scoreboardPage = function(req, res) {
 };
 
 
-var eventsPage = function(req, res) {
-  // Render index.html to allow application to handle routing
-  res.sendFile(path.join(settings.staticAssets, '/index.html'), { root: settings.root });
-};
-
-
-var eventList = function(req, res) {
-
-  var returnStuff = function(list){
-    res.status(200).json(list);
-  };
-  
-  var event = {
-    title: 'Tässä ois kovakoodattu tapahtuma',
-    description: 'oiskohan sielä kalijaa'
-  };
-  console.log('Otas tästä vähän tapahtumia');
-  //res.status(200).json(event);
-  //Event.create(event)
-  //console.log(req.body.userid);
-
-  Event.findAll().success(function(events) {
-    var eventlistjson = [];
-    var self = this;
-    //console.log(events);
-    //res.status(200).json(events);
-    events.forEach(function(event){
-      var oneEvent = event.dataValues;
-
-      UserEvent.count({ 
-        where: {
-          userId: req.body.userid,
-          eventId: event.id
-        } 
-      }).success(function(count){
-        if(count > 0){
-          oneEvent.hasSignedUp = true;
-        }else{
-          oneEvent.hasSignedUp = false;
-        }
-        console.log('hoiss');
-        //console.log(oneEvent);
-        eventlistjson.push(oneEvent);
-        console.log(eventlistjson);
-      }).then(function(){
-        console.log('tää pitäs olla viimenen');
-        returnStuff(eventlistjson);
-      });
-    });
-
-    //ei toimi näin koska async
-    // console.log('nyt pitäis palauttaa juttuja');
-    // console.log(eventlistjson);
-    // res.status(200).json(eventlistjson);
-  });
-
-    // console.log('nyt pitäis palauttaa juttuja');
-    // console.log(eventlistjson);
-    // res.status(200).json(eventlistjson);
-};
-
-var deleteEvent = function (req, res, next) {
-  console.log('poisteltasko vähä tapahtumia');
-};
-
-var addParticipation = function(req, res){
-  //console.log(req.body);
-  //kusee jos ei oo kirjautunu sisään, tarkistus pitäs ehkä tehä jotenki järkevästi
-  if (typeof req.body.userid === 'undefined'){
-    res.status(401);
-  };
-  
-  UserEvent.count(
-    { where: ['"eventId" = ? AND "userId" = ?', req.body.eventid, req.body.userid] }
-  ).then(function(count){
-    console.log(count);
-
-    if(count > 0){      
-      console.log('pitäs poistaa suoritukset');
-      UserEvent.findAll({
-        where: ['"eventId" = ? AND "userId" = ?', req.body.eventid, req.body.userid],
-        attributes: ['id']
-      }).success(function(userevents){
-
-        console.log('nämä poistetaan');
-        userevents.forEach(function(userevent){
-          console.log(userevent.dataValues.id);
-          UserEvent.destroy(userevent.dataValues.id);
-        });
-        res.status(200);
-      });
-
-    }else{
-      //tehdään uusi
-      var participation = {
-        eventId: req.body.eventid,
-        userId: req.body.userid
-      };
-      UserEvent.create(participation).success(function(){
-        res.status(200);
-      });
-    }
-  })  
-};
-
 
 module.exports = {
   login: login,
@@ -425,10 +318,6 @@ module.exports = {
   reset: reset,
   forgot: forgot,
   postForgot: postForgot,
-  settings: settingsPage,
   scoreboard: scoreboardPage,
-  eventsPage: eventsPage,
-  eventList: eventList,
-  deleteEvent: deleteEvent,
-  addParticipation: addParticipation
+  settings: settingsPage
 };

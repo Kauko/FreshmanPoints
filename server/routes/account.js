@@ -18,11 +18,6 @@ var routes = function(app) {
   app.get('/signup', accountController.signup);
   app.get('/settings', accountController.settings);
   app.get('/scoreboard', accountController.scoreboard);
-  app.get('/events', accountController.eventsPage);
-  app.get('/events.json', accountController.eventList);
-  app.post('/events.json', accountController.eventList);
-  app.delete('/events', auth.isAuthenticated, accountController.deleteEvent);
-  app.post('/events', accountController.addParticipation);
 };
 
 module.exports = routes;
