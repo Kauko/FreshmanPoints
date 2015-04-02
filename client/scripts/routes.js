@@ -88,22 +88,7 @@ var scoreboard = function() {
 
   render(ScoreboardPage);
 };
-var Events = [
-    {title: 'Kalijaa',
-    id: '1', 
-    description: 'juuaan vitusti', 
-    image: 'images/KappaHD.jpg'},
 
-    {title: 'Lissää kalijaa', 
-    id: '2',
-    description: 'tääläki juuaan', 
-    image: 'images/KappaHD.jpg'},
-
-    {title: 'Oisko wckokkia vähä', 
-    id: '3',
-    description: 'sielä on kyykkää (ja kalijaa)', 
-    image: 'images/KappaHD.jpg'},
-];
 
 var events = function() {
   render(EventsPage);
