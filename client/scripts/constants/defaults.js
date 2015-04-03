@@ -22,16 +22,16 @@ var Defaults = {
   //tämä pitäs olla tyhjä defaulttina mutta testaillessa mukava näin
   events: [
     {
-      title: 'WCock',
-      description: 'Pelataan kyykkää',
+      title: 'Wcok',
+      description: 'Pelataan kyykkää ja foobar foobar foobar foobar foobar foobar foobar foobar foobar foobar foobar foobar foobar foobar foobar foobar',
       image: 'images/KappaHD.jpg',
       id: '1',
       date: '1999-01-01'
     },
 
      {
-      title: 'Wappuorgia',
-      description: 'Tavallinen opiskelijavappu',
+      title: 'Wappusauna',
+      description: 'Tavallinen opiskelijavappu ja foobar foobar foobar foobar foobar foobar foobar foobar foobar foobar foobar foobar foobar foobar foobar',
       image: 'images/KappaHD.jpg',
       id: '2',
       date: '2015-01-01'
@@ -39,7 +39,7 @@ var Defaults = {
 
      {
       title: 'Fuksisauna',
-      description: 'Kiusataan ja isketään fukseja',
+      description: 'Kiusataan ja isketään fukseja ja foobar foobar foobar foobar foobar foobar foobar foobar foobar foobar foobar foobar foobar foobar foobar',
       image: 'images/KappaHD.jpg',
       id: '3',
       date: '2016-01-01'
@@ -47,7 +47,7 @@ var Defaults = {
 
      {
       title: 'Pikkujoulu',
-      description: 'Vietetään joulua pikkuista',
+      description: 'Vietetään joulua pikkuista ja foobar foobar foobar foobar foobar foobar foobar foobar foobar foobar foobar foobar foobar',
       image: 'images/KappaHD.jpg',
       id: '4',
       date: '3030-01-01'
@@ -55,7 +55,7 @@ var Defaults = {
 
     {
       title: 'Pikkulauantai',
-      description: 'Tavallinen keskiviikko, eli kaljaa',
+      description: 'Tavallinen keskiviikko, eli kaljaa ja foobar foobar foobar foobar foobar foobar foobar foobar foobar foobar foobar foobar foobar',
       image: 'images/KappaHD.jpg',
       id: '5',
       date: '1969-10-10'
