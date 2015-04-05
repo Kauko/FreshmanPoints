@@ -81,8 +81,42 @@ var Ilmoittautuminen = React.createClass({
 
     );
   }
+
 });
 
+
+var Customteko = React.createClass({
+
+  getInitialState: function() {
+
+        return {};
+    },
+
+
+  render: function() {
+
+    var kakka;
+
+    return (
+      
+      <BS.Panel>
+
+      <BS.DropdownButton bsStyle='primary' title='Lisää customteko'>Valitse käyttäjät
+
+      
+      <BS.MenuItem>
+      <BS.DropdownButton title='Valitse teko'>
+      </BS.DropdownButton>
+      </BS.MenuItem>
+
+      </BS.DropdownButton>
+      
+      </BS.Panel>
+
+    );
+  }
+  
+});
 
 
 
@@ -292,6 +326,8 @@ var EventInfoList = React.createClass({
     </BS.Table>
 
             </BS.Panel>
+
+            <Customteko />
 
             </div>
 

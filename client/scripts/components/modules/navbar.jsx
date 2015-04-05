@@ -12,25 +12,42 @@ var getState = function() {
   };
 };
 
+
+var icon = (
+
+
+
+    <div>
+    <span class="logo">
+      <a href="/"> 
+        <img src="images/blank.png" height="24" width="24" alt="Freshman Points" /></a>
+    </span> &nbsp;
+      Freshman Points -tsydeemi
+    </div>
+  );
+
+
+
 var NavbarComponent = React.createClass({
   mixins: [userStore.mixin],
   getInitialState: function() {
     return getState();
   },
   render: function() {
-   
+    
     var user = this.props.user;
     var navLinks = user.loggedIn ? (
       
       
       
       
-    <BS.Navbar brand='Freshman Points -tsydeemi' href="/" inverse toggleNavKey={0}>
+    <BS.Navbar brand={icon} href="/" inverse toggleNavKey={0}>
+
 
 
       <BS.Nav collapseable right eventKey={0}>
 
-        <BS.NavItem>Hello {user.firstName ? user.firstName : user.email}</BS.NavItem>
+       <BS.NavItem>Hello {user.firstName ? user.firstName : user.email}</BS.NavItem>
 
         <BS.NavItem eventKey={0} active href="/">Home</BS.NavItem>
 
