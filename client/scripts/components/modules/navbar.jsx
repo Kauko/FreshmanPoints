@@ -39,7 +39,7 @@ var NavbarComponent = React.createClass({
     var navLinks = user.loggedIn ? (
       
       
-      
+      //<BS.NavItem>Hello {user.firstName ? user.firstName : user.email}</BS.NavItem>
       
     <BS.Navbar brand={icon} href="/" inverse toggleNavKey={0}>
 
@@ -47,7 +47,7 @@ var NavbarComponent = React.createClass({
 
       <BS.Nav collapseable right eventKey={0}>
 
-       <BS.NavItem>Hello {user.firstName ? user.firstName : user.email}</BS.NavItem>
+       
 
         <BS.NavItem eventKey={0} active href="/">Home</BS.NavItem>
 

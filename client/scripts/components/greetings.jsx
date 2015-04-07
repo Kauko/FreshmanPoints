@@ -15,25 +15,30 @@ var jwt = require('jsonwebtoken');
 
 
 
-
-
 var LikeButton = React.createClass({
+
   getInitialState: function() {
+
     return {liked: false};
+
   },
+
   handleClick: function(event) {
     eventActions.signup();
-    this.setState({liked: !this.state.liked});    
+    this.setState({liked: !this.state.liked});   
+     
   },
 
 
   render: function() {
-    //var text = this.state.liked ? this.props.event.id : 'Et uskalla painaa tästä';
+ 
     var text = 'Delete';
     return (
       <div>
       <BS.Button bsStyle="danger" onClick={this.handleClick}>
+
         {text}
+
       </BS.Button>
 
       <BS.DropdownButton bsStyle="info" title="Ilmoittautuneet">
@@ -73,11 +78,10 @@ var Ilmoittautuminen = React.createClass({
 
     var väri = this.state.liked ? 'success' : 'warning';
 
+
     return (
       
-      
-      <BS.Button bsStyle={väri} bsSize='large' onClick={this.handleClick}>{text}</BS.Button>
-      
+      <BS.Button bsStyle={väri} onClick={this.handleClick}>{text}</BS.Button>
 
     );
   }
@@ -101,15 +105,20 @@ var Customteko = React.createClass({
       
       <BS.Panel>
 
+
       <BS.DropdownButton bsStyle='primary' title='Lisää customteko'>Valitse käyttäjät
 
-      
       <BS.MenuItem>
+
       <BS.DropdownButton title='Valitse teko'>
+
+
       </BS.DropdownButton>
+
       </BS.MenuItem>
 
       </BS.DropdownButton>
+
       
       </BS.Panel>
 
@@ -117,8 +126,6 @@ var Customteko = React.createClass({
   }
   
 });
-
-
 
 
 
@@ -155,10 +162,21 @@ var EventInfo = React.createClass({
 
         var element;
 
-        /*
-        var d = this.props.event.date;
-        var n = d.toLocaleDateString();
-        */
+        
+        var j = new Date(this.props.event.date);
+     
+
+        var z = j.getFullYear();
+
+        var x = j.getMonth() + 1;
+
+        var y = j.getDate();
+
+      
+
+        var t = y + '.' + x + '. ' + z;
+                
+
 
 
         if (user.role === 'admin') {
@@ -173,18 +191,13 @@ var EventInfo = React.createClass({
 
 
 
-
-
-
-
         return (
            
-            <BS.Panel bsStyle="primary" header={this.props.event.title + " " + this.props.event.date} >
+            <BS.Panel bsStyle="primary" header={this.props.event.title + " " + t} >
 
 
-                
 
-                <img src={this.props.event.image} height="150" width="150" />
+                <img src={this.props.event.image} width="40%" height="auto" />
 
                 {element}<p></p>
 
@@ -201,7 +214,7 @@ var EventInfo = React.createClass({
 });
 
 var getState = function() {
-    //console.log('haetaan eventStore.get');
+   
   return {
     events: eventStore.get()
   };
@@ -227,37 +240,65 @@ var EventInfoList = React.createClass({
     },
     componentDidMount: function(){
         var self = this;
-        //console.log('tehtii just eventinfolista');
+        
 
         eventActions.getEvents({
             success: function (res) {
-                //console.log('oisko tää: callbackfunktio');
-                //console.log(res);
+              
                 self.setState({events: res});
             }
         });
 
-        //this.setState({events: [{title:'asdasd',description:'qwe',id:'1'}]})
-        
-        //this.setState({events: eventStore.get});
+       
     },
     render: function(){
 
-        console.log('tehhään eveninfolist ');
         var stateevents = this.state.events;
-        console.log(stateevents)
+  
 
         var today = new Date();
-        var n = today.toJSON();
+
+        var y = today.getFullYear();
+
+
+        var m = today.getMonth() + 1;
+
+         if (m.toString().length === 1) {
+
+                m = "0" + m;
+            }
+
+
+        var d = today.getDate();
+
+         if (d.toString().length === 1) {
+
+                d = "0" + d;
+            }
+
+
+        var t = y + '-' + m + '-' + d;
+
+
+
+        console.log(t);
 
 
         var vanhat = []
         var uudet = []
+        var käynnissä = []
 
 
         stateevents.forEach(function(event, i) {
 
-          if (n > stateevents[i].date) {vanhat[i] = <EventInfo event={event} key={event.title} />;
+          
+
+          if (t === stateevents[i].date) {käynnissä[i] = <EventInfo event={event} key={event.title} />;
+
+             }
+
+
+           else if (t > stateevents[i].date) {vanhat[i] = <EventInfo event={event} key={event.title} />;
 
               console.log(stateevents[i].date);
 
@@ -265,12 +306,11 @@ var EventInfoList = React.createClass({
 
             else {uudet[i] = <EventInfo event={event} key={event.title} />;}
 
-
             console.log(stateevents[i].date);
 
         })
 
-
+        console.log(käynnissä);
 
 
        
@@ -278,48 +318,46 @@ var EventInfoList = React.createClass({
 
             <DefaultLayout>
 
-
-
             <div className="ScoreboardPaske">
 
             <BS.Panel header="Scoreboard" bsStyle='info'>
 
 
-            <BS.Table striped bordered condensed hover>
+            <BS.Table striped hover>
       <thead>
         <tr>
           <th>#</th>
-          <th>First Name</th>
-          <th>Last Name</th>
+          <th>Nimi</th>
+          <th>Pisteet</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
+          <td>Erkki Penttiläinen</td>
+          <td>Yli 9000</td>
         </tr>
         <tr>
           <td>2</td>
-          <td>Jacob</td>
-          <td>Thornton</td>
+          <td>Pentti Erkkiläinen</td>
+          <td>420</td>
         </tr>
          <tr>
           <td>3</td>
-          <td>Jacob</td>
-          <td>Thornton</td>
+          <td>Anu Saukko</td>
+          <td>69</td>
         </tr> <tr>
           <td>4</td>
-          <td>Jacob</td>
-          <td>Thornton</td>
+          <td>Jorma Jormala</td>
+          <td>42</td>
         </tr> <tr>
           <td>5</td>
-          <td>Jacob</td>
-          <td>Thornton</td>
+          <td>Pentti Hirvonen</td>
+          <td>7</td>
         </tr> <tr>
           <td>6</td>
-          <td>Jacob</td>
-          <td>Thornton</td>
+          <td>Väinö "Kivi" Jormala</td>
+          <td>0,5</td>
         </tr>
        
       </tbody>
@@ -332,14 +370,34 @@ var EventInfoList = React.createClass({
             </div>
 
 
-            
+      
             
             <div className="ListTitle">
            
 
-            
+            <div className="Kännissä">
 
-            <div>
+            <BS.Panel header='Käynnissä olevat tapahtumat' bsStyle='success'>
+
+
+            {käynnissä}
+
+            {käynnissä.length === 0 ?
+
+              'Ei käynnissä olevia tapahtumia'
+
+            : null}
+
+
+            </BS.Panel>
+            
+            </div>
+
+
+
+
+
+            <div className="Menneet">
 
             <BS.Panel header='Menneet tapahtumat' bsStyle='danger'>
 
@@ -347,42 +405,49 @@ var EventInfoList = React.createClass({
 
             {vanhat}
 
-              </BS.Panel>
+            {vanhat.length === 0 ?
+
+              'Ei näytettävissä menneitä tapahtumia'
+
+            : null}
+
+            </BS.Panel>
             
             </div>
 
             
 
             
-            <div>
+            <div className="Tulevat">
 
 
-            <BS.Panel header='Tulevat tapahtumat' bsStyle='success'>
-
-       
+            <BS.Panel header='Tulevat tapahtumat' bsStyle='info'>
 
             {uudet}
 
-             </BS.Panel>
+            {uudet.length === 0 ?
+
+              'Ei näytettävissä tulevia tapahtumia'
+
+            : null}
+
+            </BS.Panel>
             </div>
-
-
 
           
             </div>
             
           
-           </DefaultLayout>          
+           </DefaultLayout>      
+
         );
     },
+
     _onChange: function() {
     console.log('_onChange');
     this.setState(getState());
   }
 });
 
-
-
  
-//module.exports = EventInfo;
 module.exports = EventInfoList;

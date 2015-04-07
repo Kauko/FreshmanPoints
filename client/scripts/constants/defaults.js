@@ -21,12 +21,13 @@ var Defaults = {
 
   //tämä pitäs olla tyhjä defaulttina mutta testaillessa mukava näin
   events: [
+
     {
-      title: 'Wcok',
-      description: 'Pelataan kyykkää ja foobar foobar foobar foobar foobar foobar foobar foobar foobar foobar foobar foobar foobar foobar foobar foobar',
+      title: 'Hoplop',
+      description: 'Oksennetaan liukumäkeen, kustaan pallomereen ja foobar foobar foobar foobar foobar foobar foobar foobar foobar foobar foobar foobar foobar foobar foobar foobar',
       image: 'images/KappaHD.jpg',
       id: '1',
-      date: '1999-01-01'
+      date: '2015-04-07'
     },
 
      {

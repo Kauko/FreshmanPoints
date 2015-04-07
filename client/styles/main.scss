@@ -172,14 +172,80 @@
 .ListTitle{
   
   
-float:left;
+    float:left;
     width:45%;
     padding-left:50px;
+
+}
+
+.ListTitle .btn{
+  
+  
+
+}
+
+
+
+.ListTitle .img{
+  
+
+  max-width: 100%; 
+  height: auto; 
+  display: block;
+
+.img-responsive {
+    display: block;
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+}
 
 }
 
 .main-container {
   
 
-margin:20px
+margin:20px;
+
+}
+
+body { 
+
+background: #eee !important;
+
+}
+
+
+
+.Kännissä .panel-body {
+  
+  background-color: #d6e9c6 !important;
+
+}
+
+.Kännissä .panel-body .panel-body {
+  
+  background-color: #eee !important;
+}
+
+.Menneet .panel-body {
+  
+  background-color: #ebccd1 !important;
+
+}
+
+.Menneet .panel-body .panel-body {
+  
+  background-color: #eee !important;
+}
+
+.Tulevat .panel-body {
+  
+  background-color: #bce8f1 !important;
+
+}
+
+.Tulevat .panel-body .panel-body {
+  
+  background-color: #eee !important;
 }
