@@ -9,7 +9,6 @@ var userStore = require('../stores/user');
 var userActions = require('../actions/user');
 
 
-
 //Ilmoittautumisnappi fuksille 
 
 var Ilmoittautuminen = React.createClass({
@@ -305,7 +304,7 @@ var EventInfoList = React.createClass({
 
         var t = y + '-' + m + '-' + d;
 
-        //console.log(t);
+        console.log(t);
 
 
         //Listat tuleville, menneille ja käynnissä oleville eventeille
@@ -318,6 +317,10 @@ var EventInfoList = React.createClass({
         //Rullaillaan eventit läpi ja nakellaan ne päivämäärän mukaan oikeisiin listoihin
 
         stateevents.forEach(function(event, i) {
+
+
+
+
 
 
           if (t === stateevents[i].date) {käynnissä[i] = <EventInfo event={event} user={self.state.user} key={event.id} hideItem = {self.hideItem} />;

@@ -16,11 +16,13 @@ var eventList = function(req, res) {
   var eventlistjson = [];
 
   var event = {
-    title: 'Tässä ois kovakoodattu tapahtuma',
-    description: 'oiskohan sielä kalijaa'
+    title: 'Wappuorgia',
+    description: 'Masennutaan kiltahuoneella',
+    date: '2015-04-07'
+   
   };
   //Tällä voi lisätä rivejä kantaan jos pitää tauluja droppailla
-  //Event.create(event)
+  Event.create(event)
 
   //tämä tarkistus pitää muuttaa jotenki järkeväksi 
   if (typeof req.body.userid === 'undefined'){
@@ -36,6 +38,7 @@ var eventList = function(req, res) {
       'SELECT "events"."id"\
       ,"events"."title"\
       ,"events"."description"\
+      ,"events"."date"\
       ,"events"."image"\
       ,EXISTS (\
         SELECT id\

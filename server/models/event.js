@@ -12,6 +12,9 @@ var EventModel = function(sequelize, DataTypes) {
     image: {
       type: DataTypes.STRING,
       defaultValue: 'images/KappaHD.jpg'
+    }, 
+      date: {
+      type: DataTypes.DATE
     },
     points: DataTypes.INTEGER
   });
