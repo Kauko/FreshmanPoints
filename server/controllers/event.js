@@ -22,7 +22,7 @@ var eventList = function(req, res) {
    
   };
   //Tällä voi lisätä rivejä kantaan jos pitää tauluja droppailla
-  Event.create(event)
+  //Event.create(event)
 
   //tämä tarkistus pitää muuttaa jotenki järkeväksi 
   if (typeof req.body.userid === 'undefined'){

@@ -319,10 +319,6 @@ var EventInfoList = React.createClass({
         stateevents.forEach(function(event, i) {
 
 
-
-
-
-
           if (t === stateevents[i].date) {käynnissä[i] = <EventInfo event={event} user={self.state.user} key={event.id} hideItem = {self.hideItem} />;
 
              }
