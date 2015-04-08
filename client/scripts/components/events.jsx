@@ -31,7 +31,7 @@ var Ilmoittautuminen = React.createClass({
   render: function() {
  
     var user = this.props.user;
-    var text = this.state.signedup ? 'Peruuta ilmoittautuminen' : 'Ilmoittaudu';
+    var text = this.state.signedup ? 'Peruuta' : 'Ilmoittaudu';
     var väri = this.state.signedup ? 'warning' : 'success';
 
     return (
@@ -349,7 +349,7 @@ var EventInfoList = React.createClass({
             <BS.Panel header="Scoreboard" bsStyle='info'>
 
 
-            <BS.Table striped hover>
+            <BS.Table striped condensed hover>
             
             <thead>
             <tr>

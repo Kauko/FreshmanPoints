@@ -172,7 +172,7 @@ body {
 .ScoreboardPaske{
   
  float:left;
-    width:55%;
+    width:50%;
    
 
 }
@@ -181,9 +181,8 @@ body {
   
   
     float:left;
-    width:45%;
-    padding-left:50px;
-
+    width:50%;
+    padding-left:5%;
 }
 
 .ListTitle .btn{
@@ -212,8 +211,8 @@ body {
 
 .main-container {
   
-
-margin:20px;
+  margin: 3%;
+   
 
 }
 
@@ -221,6 +220,13 @@ body {
 
 background: #e6e6e6 !important;
 
+}
+
+
+.btn {
+    white-space: normal;
+    width: 100%;
+    max-width: 120px;
 }
 
 
@@ -257,3 +263,5 @@ background: #e6e6e6 !important;
   
   background-color: #eee !important;
 }
+
+
