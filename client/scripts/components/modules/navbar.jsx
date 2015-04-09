@@ -12,11 +12,7 @@ var getState = function() {
   };
 };
 
-
 var icon = (
-
-
-
     <div>
     <span class="logo">
       <a href="/"> 
@@ -25,8 +21,6 @@ var icon = (
       Freshman Points
     </div>
   );
-
-
 
 var NavbarComponent = React.createClass({
   mixins: [userStore.mixin],
@@ -37,84 +31,34 @@ var NavbarComponent = React.createClass({
     
     var user = this.props.user;
     var navLinks = user.loggedIn ? (
-      
-      
-      //<BS.NavItem>Hello {user.firstName ? user.firstName : user.email}</BS.NavItem>
-      
+       
+    //<BS.NavItem>Hello {user.firstName ? user.firstName : user.email}</BS.NavItem>
     <BS.Navbar brand={icon} href="/" inverse toggleNavKey={0}>
-
-
-
       <BS.Nav collapseable right eventKey={0}>
-
-       
-
         <BS.NavItem eventKey={0} active href="/">Home</BS.NavItem>
-
-        
-
         <BS.NavItem eventKey={1} href="/settings">My Account</BS.NavItem>
-     
         <BS.NavItem eventKey={2} href="/logout" onClick={this.handleLogout}>Logout</BS.NavItem>
-     
         <BS.NavItem eventKey={3} href="/events">Events</BS.NavItem>
-
       </BS.Nav>
-
-
-
-
     </BS.Navbar>
-      
-
-
     ) : (
-     
-
-
-
     <BS.Navbar brand='Freshman Points -tsydeemi' href="/" inverse toggleNavKey={0}>
-
-
       <BS.Nav collapseable right eventKey={0}>
-      
         <BS.NavItem eventKey={0} active href="/">Home</BS.NavItem>
-
         <BS.NavItem eventKey={1} href="/login">Login</BS.NavItem>
-      
-        <BS.NavItem eventKey={2} href="/signup">Create account</BS.NavItem>
-      
-        <BS.NavItem eventKey={3} href="/greetings">Greetings</BS.NavItem>
-
+        <BS.NavItem eventKey={2} href="/signup">Create account</BS.NavItem> 
+        <BS.NavItem eventKey={3} href="/events">Events</BS.NavItem>
       </BS.Nav>
-
-
     </BS.Navbar>
-
     );
-    
-    
+      
  return (
-     
-
-        
-
     <div>
-
-    {navLinks}
-      
-    </div>
-
-
-       
-      
+    {navLinks}  
+    </div>  
     );
-
-
-
-
-
   },
+
   handleLogout: function(e) {
     e.preventDefault();
     userActions.logout();
