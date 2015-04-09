@@ -22,7 +22,7 @@ var icon = (
       <a href="/"> 
         <img src="images/blank.png" height="24" width="24" alt="Freshman Points" /></a>
     </span> &nbsp;
-      Freshman Points -tsydeemi
+      Freshman Points
     </div>
   );
 

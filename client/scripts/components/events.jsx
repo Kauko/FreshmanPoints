@@ -51,14 +51,12 @@ var Tapahtumahallinta = React.createClass({
 
   getInitialState: function() {
 
-    return {liked: false};
+    return {};
 
   },
 
   handleClick: function(event) {
 
-    eventActions.signup();
-    this.setState({liked: !this.state.liked});   
      
   },
 
@@ -211,11 +209,9 @@ var EventInfo = React.createClass({
 
                 {element}<p></p>
 
-                <div>
-
+                
                 {this.props.event.description} 
 
-                </div>
 
             </BS.Panel>
 
@@ -244,6 +240,7 @@ var EventInfoList = React.createClass({
 
         return {
 
+          
             events: [],
             user: userStore.get()
         };
@@ -280,6 +277,9 @@ var EventInfoList = React.createClass({
         var self = this;
 
 
+        var lol = this.state.userevents;
+
+
         //Haetaan nykyinen päivämäärä ja parsitaan se muotoon yyyy.mm.dd
 
         var today = new Date();
@@ -304,7 +304,6 @@ var EventInfoList = React.createClass({
 
         var t = y + '-' + m + '-' + d;
 
-        console.log(t);
 
 
         //Listat tuleville, menneille ja käynnissä oleville eventeille
@@ -316,27 +315,49 @@ var EventInfoList = React.createClass({
 
         //Rullaillaan eventit läpi ja nakellaan ne päivämäärän mukaan oikeisiin listoihin
 
+        //Parsitaan vielä ne JSON-datetkin koska JSON date on vittujen JSON date
+
         stateevents.forEach(function(event, i) {
+        
+        var b = new Date(stateevents[i].date);
+     
+
+        var i = b.getFullYear();
+        var o = b.getMonth() + 1;
+
+         if (o.toString().length === 1) {
+
+                o = "0" + o;
+            }
 
 
-          if (t === stateevents[i].date) {käynnissä[i] = <EventInfo event={event} user={self.state.user} key={event.id} hideItem = {self.hideItem} />;
+        var p = b.getDate();
+
+        if (p.toString().length === 1) {
+
+                p = "0" + p;
+            }
+
+
+        var b = i + '-' + o + '-' + p;
+
+
+
+          if (t === b) {käynnissä[i] = <EventInfo event={event} user={self.state.user} key={event.id} hideItem = {self.hideItem} />;
 
              }
 
 
-           else if (t > stateevents[i].date) {vanhat[i] = <EventInfo event={event} user={self.state.user} key={event.id} hideItem = {self.hideItem} />;
-
-              console.log(stateevents[i].date);
+           else if (t > b) {vanhat[i] = <EventInfo event={event} user={self.state.user} key={event.id} hideItem = {self.hideItem} />;
 
                 }
 
             else {uudet[i] = <EventInfo event={event} user={self.state.user} key={event.id} hideItem = {self.hideItem} />;}
 
-            console.log(stateevents[i].date);
+           
 
         })
 
-        //console.log(käynnissä);
 
 
        
@@ -349,7 +370,7 @@ var EventInfoList = React.createClass({
             <BS.Panel header="Scoreboard" bsStyle='info'>
 
 
-            <BS.Table striped condensed hover>
+            <BS.Table striped condensed responsive hover>
             
             <thead>
             <tr>
