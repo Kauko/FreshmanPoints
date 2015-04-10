@@ -20,13 +20,9 @@
 // [endinjector]
 
 
-
 body {
-
     font-family: 'Droid Sans', sans-serif;
 }
-
-
 
 .yeogurt-info {
   text-align: center;
@@ -171,103 +167,72 @@ body {
 
 
 .ScoreboardPaske{
-  
- float:left;
-    width:50%;
-   
-
+  float:left;
+  width:50%;
 }
 
 .ListTitle{
-  
-  
-    float:left;
-    width:50%;
-    padding-left:4%;
+  float:left;
+  width:50%;
+  padding-left:4%;
 }
 
 .ListTitle .btn{
   
-  
-
 }
 
-
-
 .ListTitle .img{
-  
-
   max-width: 100%; 
   height: auto; 
   display: block;
 
 .img-responsive {
-    display: block;
-    max-width: 100%;
-    width: 100%;
-    height: auto;
+  display: block;
+  max-width: 100%;
+  width: 100%;
+  height: auto;
 }
 
 }
 
 .main-container {
-  
   margin: 2%;
-   
-
 }
 
 body { 
-
-background: #e6e6e6 !important;
-
+  background: #ddd !important;
 }
-
 
 .btn {
-    white-space: normal;
-    width: 100%;
-    max-width: 120px;
+  white-space: normal;
+  width: 100%;
+  max-width: 120px;
 }
 
-
-
 .Käynnissä .panel-body {
-  
   background-color: #d6e9c6 !important;
-
 }
 
 .Käynnissä .panel-body .panel-body {
-  
   background-color: #eee !important;
 }
 
 .Menneet .panel-body {
-  
   background-color: #ebccd1 !important;
-
 }
 
 .Menneet .panel-body .panel-body {
-  
   background-color: #eee !important;
 }
 
 .Tulevat .panel-body {
-  
   background-color: #bce8f1 !important;
-
 }
 
 .Tulevat .panel-body .panel-body {
-  
   background-color: #eee !important;
 }
 
-
 .panel-body {
-  
   padding: 3%;
-
 }

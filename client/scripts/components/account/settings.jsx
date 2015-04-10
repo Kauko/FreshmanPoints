@@ -4,6 +4,7 @@ var React = require('react');
 var DefaultLayout = require('../layouts/default.jsx');
 var userStore = require('../../stores/user');
 var userActions = require('../../actions/user');
+var BS = require('react-bootstrap');
 
 var getState = function() {
   return {
@@ -39,6 +40,11 @@ var SettingsComponent = React.createClass({
           <p>
             <label htmlFor="lastName">Last Name:</label>
             <input type="text" name="lastName" id="lastName" defaultValue={user.lastName} />
+          </p>
+
+          <p>
+            <label htmlFor="nickName">Nick Name:</label>
+            <input type="text" name="nickName" id="nickName" defaultValue={user.nickName} />
           </p>
 
           <button>Update Profile</button>
