@@ -16,10 +16,10 @@ var eventList = function(req, res) {
   var eventlistjson = [];
 
   var event = {
-    title: 'Wappuorgia',
-    description: 'Masennutaan kiltahuoneella',
-    date: '2015-04-09'
-   
+    title: 'WCOK',
+    description: 'Heitellään palikoita',
+    date: '2014-10-10',
+    image: 'images/ic_directions_walk_black_48dp.png'
   };
   //Tällä voi lisätä rivejä kantaan jos pitää tauluja droppailla
   //Event.create(event)

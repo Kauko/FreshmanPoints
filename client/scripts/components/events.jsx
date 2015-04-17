@@ -35,6 +35,7 @@ var Ilmoittautuminen = React.createClass({
 
     return (
       
+      
       <BS.Button bsStyle={väri} onClick={this.handleClick}>{text}</BS.Button>
 
     );
@@ -177,12 +178,28 @@ var EventInfo = React.createClass({
            
             <BS.Panel bsStyle="primary" header={this.props.event.title + " " + t} >
 
-            <img src={this.props.event.image} width="40%" height="auto" />
+            <div><img src={this.props.event.image} width="30%"/>
+
+            <BS.Well>
+            {this.props.event.description} 
+            </BS.Well>
+
+            </div>
+
+            <div>
 
             {element}
-            <p></p>
-            {this.props.event.description} 
 
+            <a href="/">
+            <div className="bg">
+            <div className="fb">
+            f
+            </div>
+            </div>
+            </a>
+
+            </div>
+            
             </BS.Panel>
 
         );
@@ -309,7 +326,7 @@ var EventInfoList = React.createClass({
 
             <BS.Panel header="Scoreboard" bsStyle='info'>
 
-            <BS.Table striped condensed responsive hover>
+            <BS.Table responsive hover>
             <thead>
             <tr>
             <th>#</th>
