@@ -39,6 +39,7 @@ var NavbarComponent = React.createClass({
         <BS.NavItem eventKey={1} href="/settings">My Account</BS.NavItem>
         <BS.NavItem eventKey={2} href="/logout" onClick={this.handleLogout}>Logout</BS.NavItem>
         <BS.NavItem eventKey={3} href="/events">Events</BS.NavItem>
+        <BS.NavItem eventKey={4} href="/scoreboard">Scoreboard</BS.NavItem>
       </BS.Nav>
     </BS.Navbar>
     ) : (
@@ -48,6 +49,7 @@ var NavbarComponent = React.createClass({
         <BS.NavItem eventKey={1} href="/login">Login</BS.NavItem>
         <BS.NavItem eventKey={2} href="/signup">Create account</BS.NavItem> 
         <BS.NavItem eventKey={3} href="/events">Events</BS.NavItem>
+        <BS.NavItem eventKey={4} href="/scoreboard">Scoreboard</BS.NavItem>
       </BS.Nav>
     </BS.Navbar>
     );

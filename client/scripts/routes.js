@@ -14,7 +14,9 @@ var ForgotPage =
   React.createFactory(require('./components/account/forgot.jsx'));
 var SettingsPage = 
   React.createFactory(require('./components/account/settings.jsx'));
-var EventsPage = React.createFactory(require('./components/events.jsx'));
+var EventsPage = React.createFactory(require('./components/scoreboard.jsx'));
+var ScoreboardPage =
+  React.createFactory(require('./components/scoreboard.jsx'));
 
 var render = function(Page) {
   React.render(new Page(), document.getElementById('app-wrapper'));
@@ -84,6 +86,10 @@ var events = function() {
   //React.render(MyElement, document.getElementById('app-wrapper'));
 };
 
+var scoreboard = function() {
+  render(ScoreboardPage);
+};
+
 var routes = {
   '/login': login,
   '/forgot': forgot,
@@ -91,7 +97,8 @@ var routes = {
   '/signup': signup,
   '/settings': settings,  
   '/': index,
-  '/events': events
+  '/events': events,
+  '/scoreboard': scoreboard
 };
 
 module.exports = routes;
