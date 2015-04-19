@@ -18,7 +18,7 @@ var eventList = function(req, res) {
   var event = {
     title: 'Wappuorgia',
     description: 'Masennutaan kiltahuoneella',
-    date: '2015-04-09'
+    date: '2015-04-25'
    
   };
   //Tällä voi lisätä rivejä kantaan jos pitää tauluja droppailla

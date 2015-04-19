@@ -5,7 +5,6 @@ var DefaultLayout = require('./layouts/default.jsx');
 var BS = require('react-bootstrap');
 //var scoreboardActions = require('../actions/scoreboard');
 
-var data 
 
 var ScoreboardComponent = React.createClass({
 
@@ -48,15 +47,20 @@ var Person = React.createClass({
   }
 });
 
+var data = [
+  {first:'Nadir', last:'Derdour', points:'-9000'},
+  {first:'Aapo', last:'Salo', points:'20'},
+  {first:'Jouni', last:'Mestari', points:'9001'},
+  {first:'Tuomas', last:'Höyhtyä', points:'210'},
+  {first:'Elisa', last:'Tähtö', points:'1337'}
+]
+
+data.sort(function(a,b) { return parseFloat(b.points) - parseFloat(a.points) } );
+
 var PersonList = React.createClass({
   getInitialState: function() {
     return {
-      data: [
-        {first:'Nadir', last:'Derdour', points:'-9000'},
-        {first:'Aapo', last:'Salo', points:'20'},
-        {first:'Jouni', last:'Mestari', points:'9001'},
-        {first:'Tuomas', last:'Höyhtyä', points:'210'},
-      ]
+      data
     };
   },
 
@@ -72,7 +76,7 @@ var PersonList = React.createClass({
 
   render: function() {
         var people = this.state.data.map(function(person){
-          people.sort(function(a,b) { return parseFloat(a.points) - parseFloat(b.points) } );
+          //people.sort(function(a,b) { return parseFloat(a.points) - parseFloat(b.points) } );
           return (
             <Person first={person.first} last={person.last} points={person.points} />
             );
