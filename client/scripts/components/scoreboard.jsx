@@ -41,7 +41,7 @@ var Person = React.createClass({
         <tr>
           <td>{this.props.first}</td>
           <td>{this.props.last}</td>
-         <td>{this.props.points}</td>
+         <td>{this.props.points}</td> 
         </tr>
       /* jshint ignore:end */
       )
@@ -72,7 +72,7 @@ var PersonList = React.createClass({
 
   render: function() {
         var people = this.state.data.map(function(person){
-          people.sort(function(a,b) { return parseFloat(a.points) - parseFloat(b.points) } );
+          //people.sort(function(a,b) { return parseFloat(a.points) - parseFloat(b.points) } );
           return (
             <Person first={person.first} last={person.last} points={person.points} />
             );
