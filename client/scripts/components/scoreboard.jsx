@@ -7,7 +7,6 @@ var BS = require('react-bootstrap');
 
 
 var ScoreboardComponent = React.createClass({
-
   render: function() {
     return (
       /* jshint ignore:start */
@@ -20,8 +19,7 @@ var ScoreboardComponent = React.createClass({
             <th>Sukunimi</th>
             <th>Pisteet</th>
           </tr>
-        </thead>
-            
+        </thead>  
         <tbody>
             <PersonList data={this.props.data} />
         </tbody>
@@ -55,11 +53,15 @@ var data = [
   {first:'Elisa', last:'Tähtö', points:'1337'}
 ]
 
-data.sort(function(a,b) { return parseFloat(b.points) - parseFloat(a.points) } );
+var sortData = 
+  data.sort(function(a,b) { return parseFloat(b.points) - parseFloat(a.points) } )  
+
+
 
 var PersonList = React.createClass({
   getInitialState: function() {
     return {
+      sortData
       data
     };
   },
