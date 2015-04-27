@@ -13,15 +13,15 @@ var ScoreboardComponent = React.createClass({
       /* jshint ignore:start */
         <div className="ScoreboardPaske">
         <BS.Panel header = "Scoreboard" bsStyle="info">
-        <BS.Table striped condensed responsive hover>
+        <BS.Table striped hover>
         <thead>
           <tr>
             <th>Etunimi</th>
             <th>Sukunimi</th>
+            <th>Nimimerkki</th>
             <th>Pisteet</th>
           </tr>
         </thead>
-            
         <tbody>
             <PersonList data={this.props.data} />
         </tbody>
@@ -40,7 +40,8 @@ var Person = React.createClass({
         <tr>
           <td>{this.props.first}</td>
           <td>{this.props.last}</td>
-         <td>{this.props.points}</td> 
+          <td>{this.props.nick}</td>
+          <td>{this.props.points}</td> 
         </tr>
       /* jshint ignore:end */
       )
@@ -48,14 +49,25 @@ var Person = React.createClass({
 });
 
 var data = [
-  {first:'Nadir', last:'Derdour', points:'-9000'},
-  {first:'Aapo', last:'Salo', points:'20'},
-  {first:'Jouni', last:'Mestari', points:'9001'},
-  {first:'Tuomas', last:'Höyhtyä', points:'210'},
-  {first:'Elisa', last:'Tähtö', points:'1337'}
+  {first:'Nadir', last:'Derdour', nick:'asd', points:'-9000', id:1},
+  {first:'Aapo', last:'Salo', points:'20', id:2},
+  {first:'Jouni', last:'Mestari', points:'9001', id:3},
+  {first:'Tuomas', last:'Höyhtyä', points:'210', id:4},
+  {first:'Nadir', last:'Derdour', nick:'asd', points:'-9000', id:5},
+  {first:'Aapo', last:'Salo', points:'20', id:6},
+  {first:'Jouni', last:'Mestari', points:'9001', id:7},
+  {first:'Tuomas', last:'Höyhtyä', points:'210', id:8},
+  {first:'Nadir', last:'Derdour', nick:'asd', points:'-9000', id:9},
+  {first:'Aapo', last:'Salo', points:'20', id:10},
+  {first:'Jouni', last:'Mestari', points:'9001', id:11},
+  {first:'Tuomas', last:'Höyhtyä', points:'210', id:12},
+  {first:'Elisa',nick:'asd', last:'Tähtö', points:'1337',id:13}
 ]
 
-data.sort(function(a,b) { return parseFloat(b.points) - parseFloat(a.points) } );
+data.sort(function(a,b) { return parseFloat(b.points) - parseFloat(a.points) });
+
+
+
 
 var PersonList = React.createClass({
   getInitialState: function() {
@@ -75,10 +87,11 @@ var PersonList = React.createClass({
 //  },
 
   render: function() {
+        //this.state.data.sort(people.sort(function(a,b) { return parseFloat(a.points) - parseFloat(b.points) } ))
         var people = this.state.data.map(function(person){
-          //people.sort(function(a,b) { return parseFloat(a.points) - parseFloat(b.points) } );
+          
           return (
-            <Person first={person.first} last={person.last} points={person.points} />
+            <Person first={person.first} last={person.last} nick={person.nick} points={person.points} key={person.id} />
             );
         });
         return (
