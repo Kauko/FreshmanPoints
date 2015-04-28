@@ -21,6 +21,7 @@
 
 
 body {
+
     font-family: 'Droid Sans', sans-serif;
 }
 
@@ -48,13 +49,14 @@ body {
 }
 
 .navbar-default {
+
   background-color: #337ab7;
   border-color: #337ab7;
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-  
 }
 
 .navbar-default .navbar-brand {
+
   color: white;
   text-shadow: rgb(46, 110, 165) 1px 1px,
     rgb(46, 110, 165) 2px 2px,
@@ -86,16 +88,18 @@ body {
 }
 
 .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+
   color: #ccc;
 }
 
 .navbar-default .navbar-text {
+
   color: #fbf9f9;
 }
 
 .navbar-default .navbar-nav > li > a {
+
   color: #fbf9f9;
-  
 }
 
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
@@ -109,10 +113,12 @@ body {
 }
 
 .navbar-default .navbar-nav > .active > a:hover {
+
   color: #ccc;
 }
 
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+
   background-color: #d9534f;
    text-shadow: rgb(195, 75, 71) 1px 1px,
     rgb(195, 75, 71) 2px 2px,
@@ -142,43 +148,48 @@ body {
     
     text-align:center;
     overflow: hidden;
-
 }
 
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+
   color: #d9534f;
   background-color: #d9534f;
-  
 }
 
 .navbar-default .navbar-toggle {
+
   border-color: #d9534f;
 }
 
 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+
   background-color: #d9534f;
 }
 
 .navbar-default .navbar-toggle .icon-bar {
+
   background-color: #fbf9f9;
 }
 
 .navbar-default .navbar-collapse,
 .navbar-default .navbar-form {
+
   border-color: #fbf9f9;
 }
 
 .navbar-default .navbar-link {
+
   color: #fbf9f9;
 }
 
 .navbar-default .navbar-link:hover {
+
   color: #5bc0de;
 }
 
 .navbar-collapse {
-  overflow: hidden;
 
+  overflow: hidden;
 }
 
 .nav-list {
@@ -186,10 +197,12 @@ body {
 }
 
 .pull-left {
+
   float: left;
 }
 
 .pull-right {
+
   float: right;
 }
 
@@ -198,14 +211,17 @@ body {
 }
 
 .error {
+
   color: #c00;
 }
 
 .info {
+
   color: #5280e4;
 }
 
 .success {
+
   color: #58e44e;
 }
 
@@ -219,6 +235,7 @@ body {
 }
 
 .EventInfoContainer{
+
   border-style: solid;
   border-color: #333333;
   padding-left: 20px;
@@ -229,30 +246,53 @@ body {
 }
 
 .box{
+
   display: inline-block;
   vertical-align: top;
 }
 
-
 .ScoreboardPaske{
+
   float:left;
   width:50%;
+  
+}
+
+.ScoreboardPaske .panel-info {
+  
+
+  height: 300px;
+  overflow: scroll;
+}
+
+.ScoreboardPaske{
+  
+@media(max-width:767px){
+  
+  width: 100%;
+  float: none;
+  position: relative;
+  }
 }
 
 .ListTitle{
+
   float:left;
   width:50%;
   padding-left:4%;
+
+  @media(max-width:767px){
   
+  width: 100%;
+}
 }
 
 .ListTitle .panel .panel {
+
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-  
 }
 
 .ListTitle .panel .panel .panel-body {
-  
   
 }
 
@@ -263,15 +303,10 @@ body {
   width: 30%;
 }
 
-.kuva .img
+.kuva .img {
 
- {
   max-width: 100%; 
   height: auto; 
-  
-  
-  
-
 }
 
 
@@ -279,7 +314,6 @@ body {
 .ListTitle .well {
   
   float: none;
-  
 }
 
 .vittu {
@@ -288,53 +322,56 @@ body {
 }
 
 .main-container {
+
   margin: 2%;
   margin-top:80px;
 }
 
 body { 
+
   background: #ddd !important;
-  
 }
 
 .btn {
-  white-space: normal;
   
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-  
   text-align: center;
-  
 }
 
 .Käynnissä .panel-body {
+
   background-color: #d6e9c6 !important;
 }
 
 .Käynnissä .panel-body .panel-body {
+
   background-color: #eee !important;
 }
 
 .Menneet .panel-body {
+
   background-color: #ebccd1 !important;
 }
 
 .Menneet .panel-body .panel-body {
+
   background-color: #eee !important;
 }
 
 .Tulevat .panel-body {
+
   background-color: #bce8f1 !important;
 }
 
 .Tulevat .panel-body .panel-body {
+
   background-color: #eee !important;
 }
 
 .panel-body {
-  padding: 3%;
-  
-}
 
+  padding: 3%;  
+}
 
 .panel {
   
@@ -347,42 +384,32 @@ body {
   
   th {
   
-}
+  }
   
 }
 
 .pop {
   
-
-  
-  
 }
 
 .ListTitle .well {
   
-
-display: inline-block;
-min-width: 70%;
-max-width:100%;
-
-  
+  display: inline-block;
+  min-width: 70%;
+  max-width:100%;
 }
 
- .desc .panel {
-
+.desc .panel {
 
   }
 
-
-
 .bg {
+
   margin-right: -3%;
   margin-bottom: -3%;
   background: #eee;
   overflow:hidden;
   float:right;
-  
-    
 }
 
 .fb {
@@ -513,8 +540,7 @@ max-width:100%;
     rgb(214, 214, 214) 49px 49px,
     rgb(214, 214, 214) 50px 50px;
     
-    
-   background-color: rgb(59, 89, 152);
+  background-color: rgb(59, 89, 152);
   height: 50px;
   width: 50px;
   font-size: 30px;
@@ -523,11 +549,8 @@ max-width:100%;
 }
 
 .panel-heading {
-  
-  
+   
 }
-
-
 
 .palikka {
   
@@ -535,6 +558,5 @@ max-width:100%;
   display:block;
   margin:0;
   padding:0;
-  
 }
 

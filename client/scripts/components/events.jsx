@@ -13,10 +13,9 @@ var userActions = require('../actions/user');
 
 var Ilmoittautuminen = React.createClass({
 
- getInitialState: function() {
+  getInitialState: function() {
 
     return {signedup: this.props.event.signedup};
-
   },
 
   handleClick: function(event) {
@@ -24,7 +23,6 @@ var Ilmoittautuminen = React.createClass({
     //this.props.hideItem(this.props.event.id);
     eventActions.signup(this.props.event.id, this.props.user.id);
     this.setState({signedup: !this.state.signedup});    
-
   },
 
   render: function() {
@@ -35,12 +33,9 @@ var Ilmoittautuminen = React.createClass({
 
     return (
       
-      
       <BS.Button bsStyle={väri} onClick={this.handleClick}>{text}</BS.Button>
-
     );
   }
-
 });
 
 
@@ -52,7 +47,6 @@ var Tapahtumahallinta = React.createClass({
   getInitialState: function() {
 
     return {};
-
   },
 
   handleClick: function(event) {
@@ -63,10 +57,10 @@ var Tapahtumahallinta = React.createClass({
  
     return (
 
-      <div>
+      <BS.ButtonGroup>
 
       <BS.Button bsStyle="danger" onClick={this.handleClick}>Delete</BS.Button>
-
+  
       <BS.DropdownButton bsStyle="info" title="Ilmoittautuneet">
 
       <BS.Input type="checkbox" label="Checkbox" />
@@ -74,8 +68,7 @@ var Tapahtumahallinta = React.createClass({
 
       </BS.DropdownButton>
 
-      </div>
-
+      </BS.ButtonGroup>
     );
   }
 
@@ -105,12 +98,10 @@ var Customteko = React.createClass({
       </BS.DropdownButton>
 
       </BS.Panel>
-
     );
   }
   
 });
-
 
 var EventInfo = React.createClass({    
     
@@ -130,6 +121,7 @@ var EventInfo = React.createClass({
     },
 
     getDate: function() {
+
         return this.props.event.date;
     },
 
@@ -139,7 +131,6 @@ var EventInfo = React.createClass({
     e.preventDefault();
     var form = e.currentTarget;
     eventActions.deleteEvent();
-
     },
 
     render: function() {
@@ -156,23 +147,20 @@ var EventInfo = React.createClass({
         var x = j.getMonth() + 1;
         var y = j.getDate();
 
-        var t = y + '.' + x + '. ' + z;
+        var t = y + '.' + x + '.' + z;
                 
         //Tähän mahdollisesti roolin/flagin tarkastaminen ja sen mukaan palikoiden näyttäminen kullekin erikseen
                 
-        /*
+        if (user.canAccept === true) {
 
-        if (user.role === 'admin') {
-
-        element = <Tapahtumanhallinta event={this.props.event} />;
+        element = <Tapahtumahallinta event={this.props.event} user={this.props.user}/>;
      
-          } else if (user.role === 'user') {
-
-        */
+          } else if (user.isFreshman === true) {
 
         element = <Ilmoittautuminen event={this.props.event} user={this.props.user} hideItem = {this.props.hideItem}/>;
 
-      // }
+        }
+
 
         return (
            
@@ -201,10 +189,8 @@ var EventInfo = React.createClass({
             </div>
             
             </BS.Panel>
-
         );
    }
-
 });
 
 /*
@@ -251,6 +237,7 @@ var EventInfoList = React.createClass({
 
     render: function(){
 
+        var user = this.state.user;
         var stateevents = this.state.events;
         var self = this;
 
@@ -282,7 +269,6 @@ var EventInfoList = React.createClass({
         var käynnissä = []
 
         //Rullaillaan eventit läpi ja nakellaan ne päivämäärän mukaan oikeisiin listoihin
-        
         //Parsitaan vielä ne JSON-datetkin koska JSON date on vittujen JSON date
 
         stateevents.forEach(function(event, i) {
@@ -326,7 +312,7 @@ var EventInfoList = React.createClass({
 
             <BS.Panel header="Scoreboard" bsStyle='info'>
 
-            <BS.Table responsive hover>
+            <BS.Table hover>
             <thead>
             <tr>
             <th>#</th>
@@ -376,8 +362,10 @@ var EventInfoList = React.createClass({
             </BS.Table>
             </BS.Panel>
 
-            <Customteko />
-
+            {user.canAccept === true ? <Customteko />
+              
+            : null}
+            
             </div>
 
 
@@ -418,7 +406,6 @@ var EventInfoList = React.createClass({
             </div>
             
            </DefaultLayout>      
-
         );
     },
 
@@ -426,7 +413,6 @@ var EventInfoList = React.createClass({
     //console.log('_onChange');
     this.setState(getState());
   }
-
 });
 
 module.exports = EventInfoList;

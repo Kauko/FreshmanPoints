@@ -7,7 +7,9 @@ var userActions = require('../../actions/user');
 var BS = require('react-bootstrap');
 
 var getState = function() {
+
   return {
+
     user: userStore.get()
   };
 };
@@ -23,16 +25,12 @@ var icon = (
     </div>
   );
 
-
 var NavbarComponent = React.createClass({
   mixins: [userStore.mixin],
-
- 
 
   render: function() {
     
     var user = this.props.user;
-
 
     var navLinks = user.loggedIn ? (
       
@@ -71,11 +69,11 @@ var NavbarComponent = React.createClass({
  return (
      
     <div>{navLinks}</div>    
-
     );
   },
 
   handleLogout: function(e) {
+    
     //e.preventDefault();
     userActions.logout();
   },
