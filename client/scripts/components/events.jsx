@@ -105,7 +105,7 @@ var Customteko = React.createClass({
 
 var EventInfo = React.createClass({    
     
-   mixins: [userStore.mixin],
+   //mixins: [userStore.mixin],
  
     getInitialState: function() {
       

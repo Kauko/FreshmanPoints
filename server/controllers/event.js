@@ -42,8 +42,8 @@ var eventList = function(req, res) {
     customquery += ',EXISTS ( '
     customquery +=   'SELECT id '
     customquery +=   'FROM "userEvents" '
-    customquery +=     'WHERE "eventId" = "events".id '
-    customquery +=     'AND "userId" = :userid ) AS signedup '
+    customquery +=   'WHERE "eventId" = "events".id '
+    customquery +=   'AND "userId" = :userid ) AS signedup '
     customquery += 'FROM "events" '
 
     db.sequelize.query(
@@ -60,7 +60,7 @@ var eventList = function(req, res) {
 // ja lisätä tämän haun tulokset palautettavaan jsoniin
 var sql = 'select "userEvents".id'
 sql += '  , "userEvents"."userId"'
-sql += ' , users."firstName"'
+sql += '  , users."firstName"'
 sql += '  , users."lastName"'
 sql += '  , users."nickName"'
 sql += '  , users."email"'
@@ -95,6 +95,7 @@ var addParticipation = function(req, res){
           userevents.forEach(function(userevent){
             UserEvent.destroy(userevent.dataValues.id)
               .success(function(){
+                //ei toimi oikeen koska on loopin sisällä
                 res.status(200);
               });
           });          
