@@ -34,18 +34,17 @@ var eventList = function(req, res) {
   }else{
     //tämä on varmaan vähän tyhmä tapa toteuttaa tämä
     //en vaan saa sequelizella järkevästi yhteen sarakkeeseen ilmottautumistietoa
-    var customquery = 
-      'SELECT "events"."id"\
-      ,"events"."title"\
-      ,"events"."description"\
-      ,"events"."date"\
-      ,"events"."image"\
-      ,EXISTS (\
-        SELECT id\
-        FROM "userEvents" \
-          WHERE "eventId" = "events".id \
-          AND "userId" = :userid ) AS signedup \
-      FROM "events" '
+    var customquery = 'SELECT "events"."id"'
+    customquery += ',"events"."title"'
+    customquery += ',"events"."description"'
+    customquery += ',"events"."date"'
+    customquery += ',"events"."image"'
+    customquery += ',EXISTS ( '
+    customquery +=   'SELECT id '
+    customquery +=   'FROM "userEvents" '
+    customquery +=     'WHERE "eventId" = "events".id '
+    customquery +=     'AND "userId" = :userid ) AS signedup '
+    customquery += 'FROM "events" '
 
     db.sequelize.query(
       customquery.replace(':userid', req.body.userid)
@@ -55,6 +54,20 @@ var eventList = function(req, res) {
     });
   };
 };
+
+//tällä saa yhen eventin hyväksymättömät ilmoitukset
+//eventtihaun tulokset pitäs loopata läpi
+// ja lisätä tämän haun tulokset palautettavaan jsoniin
+var sql = 'select "userEvents".id'
+sql += '  , "userEvents"."userId"'
+sql += ' , users."firstName"'
+sql += '  , users."lastName"'
+sql += '  , users."nickName"'
+sql += '  , users."email"'
+sql += ' from "userEvents"'
+sql += ' inner join users on "userEvents"."userId" = users.id'
+sql += ' where "userEvents"."eventId" = :eventId'
+sql += ' and "userEvents"."confirmDate" IS NULL'
 
 var deleteEvent = function (req, res, next) {
   //TODO: tapahtuman poisto
