@@ -19,10 +19,11 @@ var eventList = function(req, res) {
     title: 'WCOK',
     description: 'Heitellään palikoita',
     date: '2014-10-10',
-    image: 'images/ic_directions_walk_black_48dp.png'
+    points: 100,
+    image: 'images/KappaHD.jpg'
   };
   //Tällä voi lisätä rivejä kantaan jos pitää tauluja droppailla
-  //Event.create(event)
+  Event.create(event)
 
   //tämä tarkistus pitää muuttaa jotenki järkeväksi 
   if (typeof req.body.userid === 'undefined'){
@@ -68,6 +69,24 @@ sql += ' from "userEvents"'
 sql += ' inner join users on "userEvents"."userId" = users.id'
 sql += ' where "userEvents"."eventId" = :eventId'
 sql += ' and "userEvents"."confirmDate" IS NULL'
+
+
+//tällä kyselyllä saa datat scoreboardiin järjestettynä isoimmasta päästä
+//varmaan järkevää lisätä joku limitti että ei hae ihan kaikkien tietoja
+//pitää lisätä tarkistus että käyttäjä on fuksi
+
+// 'select sum(points) as points '
+// ', "userEvents"."userId" '
+// ', "users"."firstName" '
+// ', "users"."lastName" '
+// ', "users"."email" '
+// ', "users"."nickName" '
+// 'from "events" '
+// 'inner join "userEvents" on "events".ID = "userEvents"."eventId" '
+// 'inner join "users" on "users".Id = "userEvents"."userId" '
+// 'group by "userEvents"."userId", "users"."firstName" '
+// ', "users"."lastName", "users"."email", "users"."nickName" '
+// 'order by sum(points) desc '
 
 var deleteEvent = function (req, res, next) {
   //TODO: tapahtuman poisto
