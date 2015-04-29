@@ -18,6 +18,7 @@
       <!-- endbower -->
     <!-- endbuild -->    
 
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   
   <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet'  type='text/css'>
   
@@ -35,11 +36,38 @@
     <script src="/bower_components/html5shiv/dist/html5shiv-printshiv.js"></script>
     <![endif]-->
     <!-- endbuild -->
+
+
+
   </head>
+
+<script>
+
+var scroll_transparency = false;
+ $(window).scroll(function() {
+
+    //$('div.navbar-main-top').hide(500);
+
+    if ($(window).scrollTop() == 0) {
+        scroll_transparency = false;
+        $('nav').fadeTo( "fast", 1 );
+
+    }else{
+        if (scroll_transparency == false){
+            $('nav').fadeTo( "fast", .9 );
+            scroll_transparency = true;
+        }
+    }
+});
+</script>
+
+
   <body>
     <!--[if lte IE 7]>
     <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+
+
 
     <!-- Application loads here -->
     <div id="app-wrapper" ></div>
@@ -57,5 +85,8 @@
     <!-- endbuild -->
 
     <script src="/scripts/main.js"></script>
+
+
+
   </body>
 </html>

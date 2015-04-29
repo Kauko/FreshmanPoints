@@ -13,10 +13,9 @@ var userActions = require('../actions/user');
 
 var Ilmoittautuminen = React.createClass({
 
- getInitialState: function() {
+  getInitialState: function() {
 
     return {signedup: this.props.event.signedup};
-
   },
 
   handleClick: function(event) {
@@ -24,9 +23,7 @@ var Ilmoittautuminen = React.createClass({
     //this.props.hideItem(this.props.event.id);
     eventActions.signup(this.props.event.id, this.props.user.id);
     this.setState({signedup: !this.state.signedup});    
-
   },
-
 
   render: function() {
  
@@ -37,63 +34,45 @@ var Ilmoittautuminen = React.createClass({
     return (
       
       <BS.Button bsStyle={väri} onClick={this.handleClick}>{text}</BS.Button>
-
     );
   }
-
 });
 
 
-
 //Napit ilmoittautuneiden näyttämiseen ja tapahtuman poistamiseen
+//Pitäisi saada ensin noukittua lista ilmoittautuneista ja jotenkin piilotettua event
 
 var Tapahtumahallinta = React.createClass({
 
   getInitialState: function() {
 
-    return {liked: false};
-
+    return {};
   },
 
   handleClick: function(event) {
 
-    eventActions.signup();
-    this.setState({liked: !this.state.liked});   
-     
   },
-
 
   render: function() {
  
-    var text = 'Delete';
-
     return (
 
-      <div>
+      <BS.ButtonGroup>
 
-      <BS.Button bsStyle="danger" onClick={this.handleClick}>
-
-        {text}
-
-      </BS.Button>
-
-
+      <BS.Button bsStyle="danger" onClick={this.handleClick}>Delete</BS.Button>
+  
       <BS.DropdownButton bsStyle="info" title="Ilmoittautuneet">
-                    
+
       <BS.Input type="checkbox" label="Checkbox" />
-
       <BS.Button bsStyle="success">Hyväksy</BS.Button>
-
 
       </BS.DropdownButton>
 
-      </div>
-
+      </BS.ButtonGroup>
     );
   }
+
 });
-
-
 
 //Custompisteiden antaminen -komponentti joka ei vielä tee mitään
 
@@ -104,44 +83,30 @@ var Customteko = React.createClass({
         return {};
     },
 
-
   render: function() {
-
-    
 
     return (
       
       <BS.Panel>
 
-
       <BS.DropdownButton bsStyle='primary' title='Lisää customteko'>Valitse käyttäjät
-
       <BS.MenuItem>
-
       <BS.DropdownButton title='Valitse teko'>
 
-
       </BS.DropdownButton>
-
       </BS.MenuItem>
-
       </BS.DropdownButton>
 
-      
       </BS.Panel>
-
     );
   }
   
 });
 
-
-
 var EventInfo = React.createClass({    
     
    mixins: [userStore.mixin],
  
-
     getInitialState: function() {
       
         return {
@@ -151,10 +116,12 @@ var EventInfo = React.createClass({
     },
 
     deleteHandler: function(event) {
+
         this.props.onDelete(this.props.event);
     },
 
     getDate: function() {
+
         return this.props.event.date;
     },
 
@@ -164,18 +131,14 @@ var EventInfo = React.createClass({
     e.preventDefault();
     var form = e.currentTarget;
     eventActions.deleteEvent();
-
     },
 
     render: function() {
-        
 
         var user = this.state.user;
         var showShit = true;
-
         var element;
 
-        
         //Eventin päivämäärän parsiminen muotoon dd.mm.yyyy 
 
         var j = new Date(this.props.event.date);
@@ -184,45 +147,50 @@ var EventInfo = React.createClass({
         var x = j.getMonth() + 1;
         var y = j.getDate();
 
-
-        var t = y + '.' + x + '. ' + z;
+        var t = y + '.' + x + '.' + z;
                 
+        //Tähän mahdollisesti roolin/flagin tarkastaminen ja sen mukaan palikoiden näyttäminen kullekin erikseen
+                
+        if (user.canAccept === true) {
 
-        /*
-
-        if (user.role === 'admin') {
-
-        element = <Tapahtumanhallinta event={this.props.event} />;
+        element = <Tapahtumahallinta event={this.props.event} user={this.props.user}/>;
      
-          } else if (user.role === 'user') {
-
-        */
+          } else if (user.isFreshman === true) {
 
         element = <Ilmoittautuminen event={this.props.event} user={this.props.user} hideItem = {this.props.hideItem}/>;
 
-      // }
+        }
 
 
         return (
            
             <BS.Panel bsStyle="primary" header={this.props.event.title + " " + t} >
 
-                <img src={this.props.event.image} width="40%" height="auto" />
+            <div><img src={this.props.event.image} width="30%"/>
 
-                {element}<p></p>
+            <BS.Well>
+            {this.props.event.description} 
+            </BS.Well>
 
-                <div>
+            </div>
 
-                {this.props.event.description} 
+            <div>
 
-                </div>
+            {element}
 
+            <a href="/">
+            <div className="bg">
+            <div className="fb">
+            f
+            </div>
+            </div>
+            </a>
+
+            </div>
+            
             </BS.Panel>
-
         );
-  
    }
-
 });
 
 /*
@@ -236,7 +204,6 @@ var getState = function() {
 
 var EventInfoList = React.createClass({
     mixins: [eventStore.mixin],
-   
 
    getInitialState: function() {
 
@@ -253,14 +220,9 @@ var EventInfoList = React.createClass({
 
         var self = this;
 
-        //console.log(this.state.user);
-
         eventActions.getEvents(self.state.user.id,{
 
             success: function (res) {
-
-                //console.log('oisko tää: callbackfunktio');
-                //console.log(res);
 
                 self.setState({events: res});
             }
@@ -275,37 +237,30 @@ var EventInfoList = React.createClass({
 
     render: function(){
 
+        var user = this.state.user;
         var stateevents = this.state.events;
-  
         var self = this;
-
 
         //Haetaan nykyinen päivämäärä ja parsitaan se muotoon yyyy.mm.dd
 
         var today = new Date();
 
         var y = today.getFullYear();
-
         var m = today.getMonth() + 1;
 
-         if (m.toString().length === 1) {
+        if (m.toString().length === 1) {
 
-                m = "0" + m;
-            }
-
+              m = "0" + m;
+          }
 
         var d = today.getDate();
 
-         if (d.toString().length === 1) {
+        if (d.toString().length === 1) {
 
-                d = "0" + d;
-            }
-
+              d = "0" + d;
+          }
 
         var t = y + '-' + m + '-' + d;
-
-        console.log(t);
-
 
         //Listat tuleville, menneille ja käynnissä oleville eventeille
 
@@ -313,32 +268,41 @@ var EventInfoList = React.createClass({
         var uudet = []
         var käynnissä = []
 
-
         //Rullaillaan eventit läpi ja nakellaan ne päivämäärän mukaan oikeisiin listoihin
+        //Parsitaan vielä ne JSON-datetkin koska JSON date on vittujen JSON date
 
         stateevents.forEach(function(event, i) {
+        
+        var b = new Date(stateevents[i].date);
+     
+        var i = b.getFullYear();
+        var o = b.getMonth() + 1;
 
+         if (o.toString().length === 1) {
 
-          if (t === stateevents[i].date) {käynnissä[i] = <EventInfo event={event} user={self.state.user} key={event.id} hideItem = {self.hideItem} />;
+              o = "0" + o;
+          }
 
-             }
+        var p = b.getDate();
 
+        if (p.toString().length === 1) {
 
-           else if (t > stateevents[i].date) {vanhat[i] = <EventInfo event={event} user={self.state.user} key={event.id} hideItem = {self.hideItem} />;
+              p = "0" + p;
+          }
 
-              console.log(stateevents[i].date);
+        var b = i + '-' + o + '-' + p;
 
-                }
+        if (t === b) {käynnissä[i] = <EventInfo event={event} user={self.state.user} key={event.id} hideItem = {self.hideItem} />;
 
-            else {uudet[i] = <EventInfo event={event} user={self.state.user} key={event.id} hideItem = {self.hideItem} />;}
+            }
 
-            console.log(stateevents[i].date);
+          else if (t > b) {vanhat[i] = <EventInfo event={event} user={self.state.user} key={event.id} hideItem = {self.hideItem} />;
+
+              }
+
+              else {uudet[i] = <EventInfo event={event} user={self.state.user} key={event.id} hideItem = {self.hideItem} />;}
 
         })
-
-        //console.log(käynnissä);
-
-
        
         return(     
 
@@ -348,9 +312,7 @@ var EventInfoList = React.createClass({
 
             <BS.Panel header="Scoreboard" bsStyle='info'>
 
-
-            <BS.Table striped condensed hover>
-            
+            <BS.Table hover>
             <thead>
             <tr>
             <th>#</th>
@@ -395,96 +357,62 @@ var EventInfoList = React.createClass({
             <td>Väinö "Kivi" Jormala</td>
             <td>0,5</td>
             </tr>
-           
             </tbody>
 
             </BS.Table>
-
             </BS.Panel>
 
-
-            <Customteko />
-
-
+            {user.canAccept === true ? <Customteko />
+              
+            : null}
+            
             </div>
 
 
-      
             <div className="ListTitle">
            
-
-
             <div className="Käynnissä">
-
             <BS.Panel header='Käynnissä olevat tapahtumat' bsStyle='success'>
 
             {käynnissä}
-
-            {käynnissä.length === 0 ?
-
-              'Ei käynnissä olevia tapahtumia'
-
+            {käynnissä.length === 0 ? 'Ei käynnissä olevia tapahtumia' 
             : null}
 
-
             </BS.Panel>
-            
             </div>
-
-
 
 
             <div className="Menneet">
-
             <BS.Panel header='Menneet tapahtumat' bsStyle='danger'>
 
             {vanhat}
-
-            {vanhat.length === 0 ?
-
-              'Ei näytettävissä menneitä tapahtumia'
-
+            {vanhat.length === 0 ? 'Ei näytettävissä menneitä tapahtumia'
             : null}
 
             </BS.Panel>
-            
             </div>
 
-            
 
-            
             <div className="Tulevat">
-
-
             <BS.Panel header='Tulevat tapahtumat' bsStyle='info'>
 
             {uudet}
-
-            {uudet.length === 0 ?
-
-              'Ei näytettävissä tulevia tapahtumia'
-
+            {uudet.length === 0 ? 'Ei näytettävissä tulevia tapahtumia'
             : null}
 
             </BS.Panel>
-
             </div>
           
             </div>
             
-          
            </DefaultLayout>      
-
         );
     },
 
     _onChange: function() {
     //console.log('_onChange');
     this.setState(getState());
-
   }
-
 });
 
- 
 module.exports = EventInfoList;

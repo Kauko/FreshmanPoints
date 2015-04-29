@@ -20,12 +20,10 @@
 // [endinjector]
 
 
-
 body {
+
     font-family: 'Droid Sans', sans-serif;
 }
-
-
 
 .yeogurt-info {
   text-align: center;
@@ -51,68 +49,147 @@ body {
 }
 
 .navbar-default {
+
   background-color: #337ab7;
   border-color: #337ab7;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
 .navbar-default .navbar-brand {
+
   color: white;
+  text-shadow: rgb(46, 110, 165) 1px 1px,
+    rgb(46, 110, 165) 2px 2px,
+    rgb(46, 110, 165) 3px 3px,
+    rgb(46, 110, 165) 4px 4px,
+    rgb(46, 110, 165) 5px 5px,
+    rgb(46, 110, 165) 6px 6px,
+    rgb(46, 110, 165) 7px 7px,
+    rgb(46, 110, 165) 8px 8px,
+    rgb(46, 110, 165) 9px 9px,
+    rgb(46, 110, 165) 10px 10px,
+    rgb(46, 110, 165) 11px 11px,
+    rgb(46, 110, 166) 12px 12px,
+    rgb(46, 111, 167) 13px 13px,
+    rgb(47, 112, 168) 14px 14px,
+    rgb(47, 113, 170) 15px 15px,
+    rgb(47, 114, 171) 16px 16px,
+    rgb(48, 115, 172) 17px 17px,
+    rgb(48, 116, 174) 18px 18px,
+    rgb(48, 116, 175) 19px 19px,
+    rgb(49, 117, 176) 20px 20px,
+    rgb(49, 118, 177) 21px 21px,
+    rgb(49, 119, 179) 22px 22px,
+    rgb(50, 120, 180) 23px 23px,
+    rgb(50, 121, 181) 24px 24px,
+    rgb(51, 122, 183) 25px 25px;
+    overflow:hidden;
+    
 }
 
 .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
-  color: #000000;
+
+  color: #ccc;
 }
 
 .navbar-default .navbar-text {
+
   color: #fbf9f9;
 }
 
 .navbar-default .navbar-nav > li > a {
+
   color: #fbf9f9;
 }
 
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-  color: #5bc0de;
+  
+  color: white;
+  text-shadow:   0 0 3px #000000,   
+  3px 0 3px #000000,
+  0 3px 3px #000000,
+  -3px 0 3px #000000,
+  0 -3px 3px #000000;
+}
+
+.navbar-default .navbar-nav > .active > a:hover {
+
+  color: #ccc;
 }
 
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
-  color: white;
+
   background-color: #d9534f;
+   text-shadow: rgb(195, 75, 71) 1px 1px,
+    rgb(195, 75, 71) 2px 2px,
+    rgb(195, 75, 71) 3px 3px,
+    rgb(195, 75, 71) 4px 4px,
+    rgb(195, 75, 71) 5px 5px,
+    rgb(195, 75, 71) 6px 6px,
+    rgb(195, 75, 71) 7px 7px,
+    rgb(195, 75, 71) 8px 8px,
+    rgb(195, 75, 71) 9px 9px,
+    rgb(195, 75, 71) 10px 10px,
+    rgb(195, 75, 71) 11px 11px,
+    rgb(196, 75, 71) 12px 12px,
+    rgb(198, 76, 72) 13px 13px,
+    rgb(199, 76, 72) 14px 14px,
+    rgb(201, 77, 73) 15px 15px,
+    rgb(202, 77, 73) 16px 16px,
+    rgb(204, 78, 74) 17px 17px,
+    rgb(206, 79, 75) 18px 18px,
+    rgb(207, 79, 75) 19px 19px,
+    rgb(209, 80, 76) 20px 20px,
+    rgb(210, 80, 76) 21px 21px,
+    rgb(212, 81, 77) 22px 22px,
+    rgb(213, 81, 77) 23px 23px,
+    rgb(215, 82, 78) 24px 24px,
+    rgb(217, 83, 79) 25px 25px;
+    
+    text-align:center;
+    overflow: hidden;
 }
 
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+
   color: #d9534f;
   background-color: #d9534f;
 }
 
 .navbar-default .navbar-toggle {
+
   border-color: #d9534f;
 }
 
 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+
   background-color: #d9534f;
 }
 
 .navbar-default .navbar-toggle .icon-bar {
+
   background-color: #fbf9f9;
 }
 
 .navbar-default .navbar-collapse,
 .navbar-default .navbar-form {
+
   border-color: #fbf9f9;
 }
 
 .navbar-default .navbar-link {
+
   color: #fbf9f9;
 }
 
 .navbar-default .navbar-link:hover {
+
   color: #5bc0de;
 }
 
 .navbar-collapse {
-  overflow: hidden;
 
+  overflow: hidden;
 }
 
 .nav-list {
@@ -120,10 +197,12 @@ body {
 }
 
 .pull-left {
+
   float: left;
 }
 
 .pull-right {
+
   float: right;
 }
 
@@ -132,14 +211,17 @@ body {
 }
 
 .error {
+
   color: #c00;
 }
 
 .info {
+
   color: #5280e4;
 }
 
 .success {
+
   color: #58e44e;
 }
 
@@ -153,6 +235,7 @@ body {
 }
 
 .EventInfoContainer{
+
   border-style: solid;
   border-color: #333333;
   padding-left: 20px;
@@ -163,105 +246,317 @@ body {
 }
 
 .box{
+
   display: inline-block;
   vertical-align: top;
 }
 
+.ScoreboardPaske{
 
+  float:left;
+  width:50%;
+  
+}
+
+.ScoreboardPaske .panel-info {
+  
+
+  height: 300px;
+  overflow: scroll;
+}
 
 .ScoreboardPaske{
   
- float:left;
-    width:50%;
-   
-
+@media(max-width:767px){
+  
+  width: 100%;
+  float: none;
+  position: relative;
+  }
 }
 
 .ListTitle{
+
+  float:left;
+  width:50%;
+  padding-left:4%;
+
+  @media(max-width:767px){
   
+  width: 100%;
+}
+}
+
+.ListTitle .panel .panel {
+
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.ListTitle .panel .panel .panel-body {
   
-    float:left;
-    width:50%;
-    padding-left:5%;
 }
 
 .ListTitle .btn{
-  
-  
 
+  text-align:center;
+  min-width: 120px;
+  width: 30%;
 }
 
-
-
-.ListTitle .img{
-  
+.kuva .img {
 
   max-width: 100%; 
   height: auto; 
-  display: block;
-
-.img-responsive {
-    display: block;
-    max-width: 100%;
-    width: 100%;
-    height: auto;
 }
 
+
+
+.ListTitle .well {
+  
+  float: none;
+}
+
+.vittu {
+  
+  float: left;
 }
 
 .main-container {
-  
-  margin: 3%;
-   
 
+  margin: 2%;
+  margin-top:80px;
 }
 
 body { 
 
-background: #e6e6e6 !important;
-
+  background: #ddd !important;
 }
-
 
 .btn {
-    white-space: normal;
-    width: 100%;
-    max-width: 120px;
+  
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  text-align: center;
 }
 
-
-
 .Käynnissä .panel-body {
-  
-  background-color: #d6e9c6 !important;
 
+  background-color: #d6e9c6 !important;
 }
 
 .Käynnissä .panel-body .panel-body {
-  
+
   background-color: #eee !important;
 }
 
 .Menneet .panel-body {
-  
-  background-color: #ebccd1 !important;
 
+  background-color: #ebccd1 !important;
 }
 
 .Menneet .panel-body .panel-body {
-  
+
   background-color: #eee !important;
 }
 
 .Tulevat .panel-body {
-  
-  background-color: #bce8f1 !important;
 
+  background-color: #bce8f1 !important;
 }
 
 .Tulevat .panel-body .panel-body {
-  
+
   background-color: #eee !important;
 }
 
+.panel-body {
+
+  padding: 3%;  
+}
+
+.panel {
+  
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.table {
+  
+  border-collapse: collapse;
+  
+  th {
+  
+  }
+  
+}
+
+.pop {
+  
+}
+
+.ListTitle .well {
+  
+  display: inline-block;
+  min-width: 70%;
+  max-width:100%;
+}
+
+.desc .panel {
+
+  }
+
+.bg {
+
+  margin-right: -3%;
+  margin-bottom: -3%;
+  background: #eee;
+  overflow:hidden;
+  float:right;
+}
+
+.fb {
+  
+  border-radius: 5px;
+  margin-right: 15px;
+  margin-bottom: 15px;
+  overflow: hidden;
+  color:white;
+  text-shadow: rgb(48, 72, 123) 1px 1px,
+    rgb(48, 72, 123) 2px 2px,
+    rgb(48, 72, 123) 3px 3px,
+    rgb(48, 72, 123) 4px 4px,
+    rgb(48, 72, 123) 5px 5px,
+    rgb(48, 72, 123) 6px 6px,
+    rgb(48, 72, 123) 7px 7px,
+    rgb(48, 72, 123) 8px 8px,
+    rgb(48, 72, 123) 9px 9px,
+    rgb(48, 72, 123) 10px 10px,
+    rgb(48, 72, 123) 11px 11px,
+    rgb(48, 72, 123) 12px 12px,
+    rgb(48, 72, 123) 13px 13px,
+    rgb(48, 72, 123) 14px 14px,
+    rgb(48, 72, 123) 15px 15px,
+    rgb(48, 72, 123) 16px 16px,
+    rgb(48, 72, 123) 17px 17px,
+    rgb(48, 72, 123) 18px 18px,
+    rgb(48, 72, 123) 19px 19px,
+    rgb(48, 72, 123) 20px 20px,
+    rgb(48, 72, 123) 21px 21px,
+    rgb(48, 72, 123) 22px 22px,
+    rgb(48, 72, 123) 23px 23px,
+    rgb(48, 72, 123) 24px 24px,
+    rgb(48, 72, 123) 25px 25px,
+    rgb(48, 72, 123) 26px 26px,
+    rgb(48, 72, 123) 27px 27px,
+    rgb(48, 72, 123) 28px 28px,
+    rgb(48, 72, 123) 29px 29px,
+    rgb(48, 72, 123) 30px 30px,
+    rgb(48, 72, 123) 31px 31px,
+    rgb(48, 72, 123) 32px 32px,
+    rgb(48, 72, 123) 33px 33px,
+    rgb(48, 72, 123) 34px 34px,
+    rgb(48, 72, 123) 35px 35px,
+    rgb(48, 72, 123) 36px 36px,
+    rgb(48, 72, 123) 37px 37px,
+    rgb(48, 72, 123) 38px 38px,
+    rgb(48, 72, 123) 39px 39px,
+    rgb(48, 72, 123) 40px 40px,
+    rgb(48, 72, 123) 41px 41px,
+    rgb(48, 72, 123) 42px 42px,
+    rgb(48, 72, 123) 43px 43px,
+    rgb(48, 72, 123) 44px 44px,
+    rgb(48, 72, 123) 45px 45px,
+    rgb(48, 72, 123) 46px 46px,
+    rgb(48, 72, 123) 47px 47px,
+    rgb(48, 72, 123) 48px 48px,
+    rgb(48, 72, 123) 49px 49px,
+    rgb(48, 72, 123) 50px 50px,
+    rgb(48, 72, 123) 51px 51px,
+    rgb(48, 72, 123) 52px 52px,
+    rgb(48, 72, 123) 53px 53px,
+    rgb(48, 72, 123) 54px 54px,
+    rgb(48, 72, 123) 55px 55px,
+    rgb(48, 72, 123) 56px 56px,
+    rgb(48, 72, 123) 57px 57px,
+    rgb(48, 72, 123) 58px 58px,
+    rgb(48, 72, 123) 59px 59px,
+    rgb(48, 72, 123) 60px 60px,
+    rgb(48, 72, 123) 61px 61px,
+    rgb(48, 72, 123) 62px 62px,
+    rgb(48, 72, 123) 63px 63px,
+    rgb(48, 72, 123) 64px 64px,
+    rgb(48, 72, 123) 65px 65px,
+    rgb(48, 72, 123) 66px 66px,
+    rgb(48, 72, 123) 67px 67px,
+    rgb(48, 72, 123) 68px 68px,
+    rgb(48, 72, 123) 69px 69px;
+  
+   box-shadow: rgb(214, 214, 214) 1px 1px,
+    rgb(214, 214, 214) 2px 2px,
+    rgb(214, 214, 214) 3px 3px,
+    rgb(214, 214, 214) 4px 4px,
+    rgb(214, 214, 214) 5px 5px,
+    rgb(214, 214, 214) 6px 6px,
+    rgb(214, 214, 214) 7px 7px,
+    rgb(214, 214, 214) 8px 8px,
+    rgb(214, 214, 214) 9px 9px,
+    rgb(214, 214, 214) 10px 10px,
+    rgb(214, 214, 214) 11px 11px,
+    rgb(214, 214, 214) 12px 12px,
+    rgb(214, 214, 214) 13px 13px,
+    rgb(214, 214, 214) 14px 14px,
+    rgb(214, 214, 214) 15px 15px,
+    rgb(214, 214, 214) 16px 16px,
+    rgb(214, 214, 214) 17px 17px,
+    rgb(214, 214, 214) 18px 18px,
+    rgb(214, 214, 214) 19px 19px,
+    rgb(214, 214, 214) 20px 20px,
+    rgb(214, 214, 214) 21px 21px,
+    rgb(214, 214, 214) 22px 22px,
+    rgb(214, 214, 214) 23px 23px,
+    rgb(214, 214, 214) 24px 24px,
+    rgb(214, 214, 214) 25px 25px,
+    rgb(214, 214, 214) 26px 26px,
+    rgb(214, 214, 214) 27px 27px,
+    rgb(214, 214, 214) 28px 28px,
+    rgb(214, 214, 214) 29px 29px,
+    rgb(214, 214, 214) 30px 30px,
+    rgb(214, 214, 214) 31px 31px,
+    rgb(214, 214, 214) 32px 32px,
+    rgb(214, 214, 214) 33px 33px,
+    rgb(214, 214, 214) 34px 34px,
+    rgb(214, 214, 214) 35px 35px,
+    rgb(214, 214, 214) 36px 36px,
+    rgb(214, 214, 214) 37px 37px,
+    rgb(214, 214, 214) 38px 38px,
+    rgb(214, 214, 214) 39px 39px,
+    rgb(214, 214, 214) 40px 40px,
+    rgb(214, 214, 214) 41px 41px,
+    rgb(214, 214, 214) 42px 42px,
+    rgb(214, 214, 214) 43px 43px,
+    rgb(214, 214, 214) 44px 44px,
+    rgb(214, 214, 214) 45px 45px,
+    rgb(214, 214, 214) 46px 46px,
+    rgb(214, 214, 214) 47px 47px,
+    rgb(214, 214, 214) 48px 48px,
+    rgb(214, 214, 214) 49px 49px,
+    rgb(214, 214, 214) 50px 50px;
+    
+  background-color: rgb(59, 89, 152);
+  height: 50px;
+  width: 50px;
+  font-size: 30px;
+  line-height: 50px;
+  text-align: center;
+}
+
+.panel-heading {
+   
+}
+
+.palikka {
+  
+  clear: both;
+  display:block;
+  margin:0;
+  padding:0;
+}
 
