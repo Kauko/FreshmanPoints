@@ -8,6 +8,33 @@ var eventActions = require('../actions/events');
 var userStore = require('../stores/user');
 var userActions = require('../actions/user');
 
+var Tapahtumanlisäys = React.createClass({
+
+
+  handleInput: function(e) {
+    e.preventDefault();
+    var form = e.currentTarget;
+    eventActions.createEvent(form);
+    console.log(form);
+  },
+
+  render: function() {
+ 
+    return (
+
+    <BS.Panel>
+    <form id="signup-form" action="/createevent.json" method="post" onSubmit={this.handleInput}>
+    <BS.Input name='Title' type='text' id='title' label='Title' placeholder='Enter title' />
+    <BS.Input name='Description' type='text' id='description' label='Description' placeholder='Enter description' />
+    <BS.Input name='Date' type='text' id='date' label='Date' placeholder='Enter date'/>
+    <BS.Input name='Image' type='text' id='image' label='Image' placeholder='Enter image' />
+    <BS.Input type="submit">Lisää tapahtuma</BS.Input>
+    </form>
+    </BS.Panel>
+    );
+  }
+
+});
 
 //Ilmoittautumisnappi fuksille 
 
@@ -37,7 +64,6 @@ var Ilmoittautuminen = React.createClass({
     );
   }
 });
-
 
 //Napit ilmoittautuneiden näyttämiseen ja tapahtuman poistamiseen
 //Pitäisi saada ensin noukittua lista ilmoittautuneista ja jotenkin piilotettua event
@@ -155,12 +181,11 @@ var EventInfo = React.createClass({
 
         element = <Tapahtumahallinta event={this.props.event} user={this.props.user}/>;
      
-          } else if (user.isFreshman === true) {
+          } else if (user.isFreshman === false) {
 
         element = <Ilmoittautuminen event={this.props.event} user={this.props.user} hideItem = {this.props.hideItem}/>;
 
         }
-
 
         return (
            
@@ -308,6 +333,11 @@ var EventInfoList = React.createClass({
 
             <DefaultLayout>
 
+            <div className="Paska">
+            <img src="images/pip.jpg"></img>
+            <BS.Button font-size='large'>FUKSI, REKISTERÖIDY</BS.Button>
+            </div>
+
             <div className="ScoreboardPaske">
 
             <BS.Panel header="Scoreboard" bsStyle='info'>
@@ -362,9 +392,11 @@ var EventInfoList = React.createClass({
             </BS.Table>
             </BS.Panel>
 
-            {user.canAccept === true ? <Customteko />
+            {user.canAccept === false ? <Customteko />
               
             : null}
+
+            <Tapahtumanlisäys />
             
             </div>
 

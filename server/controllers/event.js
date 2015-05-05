@@ -16,7 +16,7 @@ var eventList = function(req, res) {
   var eventlistjson = [];
 
   var event = {
-    title: 'WCOK',
+    title: 'WCOjkkjK',
     description: 'Heitellään palikoita',
     date: '2014-10-10',
     points: 100,
@@ -133,9 +133,25 @@ var addParticipation = function(req, res){
   };
 };
 
+var createEvent = function (req, res) {
+ 
+var event = {
+    title: req.body.eventtitle,
+    description: req.body.eventdescription,
+    date: req.body.eventdate,
+    image: req.body.image
+  };
+
+  console.log(event);
+  Event.create(event);
+  
+
+};
+
 module.exports = {
   eventsPage: eventsPage,
   eventList: eventList,
   deleteEvent: deleteEvent,
-  addParticipation: addParticipation
+  addParticipation: addParticipation,
+  createEvent: createEvent
 };

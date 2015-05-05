@@ -261,8 +261,7 @@ body {
 .ScoreboardPaske .panel-info {
   
 
-  height: 300px;
-  overflow: scroll;
+  
 }
 
 .ScoreboardPaske{
@@ -272,6 +271,8 @@ body {
   width: 100%;
   float: none;
   position: relative;
+  height: 300px;
+  overflow: scroll;
   }
 }
 
@@ -560,3 +561,39 @@ body {
   padding:0;
 }
 
+.Paska {
+  
+  margin: -2%;
+  margin-top: -80px;
+  margin-bottom: 2%;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  overflow: hidden;
+
+ .btn {
+ bottom:75%;
+    right:30%;
+  
+    position: absolute;
+    background: transparent;
+
+  color: #fff;
+  border-color: #fff;
+  
+  font-size:40px;
+  
+  -webkit-transition: background .2s ease-in-out, border .2s ease-in-out;
+  -moz-transition: background .2s ease-in-out, border .2s ease-in-out;
+  -ms-transition: background .2s ease-in-out, border .2s ease-in-out;
+  -o-transition: background .2s ease-in-out, border .2s ease-in-out;
+  transition: background .2s ease-in-out, border .2s ease-in-out;
+
+  
+  border-width: 3px;
+
+font-family: 'Roboto', sans-serif;
+  
+
+  
+  }
+
+}

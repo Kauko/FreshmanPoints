@@ -4,7 +4,7 @@ var React = require('react');
 var routeActions = require('./actions/routes');
 var messagesActions = require('./actions/messages');
 var userStore = require('./stores/user');
-var IndexPage = React.createFactory(require('./components/index.jsx'));
+var IndexPage = React.createFactory(require('./components/events.jsx'));
 var LoginPage = React.createFactory(require('./components/account/login.jsx'));
 var SignupPage = 
   React.createFactory(require('./components/account/signup.jsx'));

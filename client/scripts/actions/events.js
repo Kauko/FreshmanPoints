@@ -2,6 +2,14 @@
 
 var Dispatcher = require('../dispatchers/default');
 var request = require('superagent');
+var serialize = require('form-serialize');
+var Dispatcher = require('../dispatchers/default');
+var userConstants = require('../constants/user');
+var eventConstants = require('../constants/events');
+var messagesActions = require('./messages');
+var routeActions = require('./routes');
+var userDefaults = require('../constants/defaults').user;
+var cookie = require('cookie');
 
 module.exports = {
 
@@ -43,5 +51,23 @@ module.exports = {
       .send({eventid: eventId, userid: userId})
       .end();
   },
+
+  createEvent: function(form, callback) {
+
+    var self = this;
+    var eventti = serialize(form);
+
+     request
+      .post('/createevent.json')
+      .type('form')
+      .send(eventti)
+      .end(function(res){ 
+        console.log('tässä ois tää serverin vastaus');
+        console.log(res);
+        //self.setEvents(res.body); 
+        callback.success(res.body);     
+      });
+
+  }
 
 };

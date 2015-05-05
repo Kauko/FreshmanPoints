@@ -6,6 +6,8 @@ var routes = function(app) {
   app.post('/events.json', eventController.eventList);
   app.delete('/events', auth.isAuthenticated, eventController.deleteEvent);
   app.post('/events', eventController.addParticipation);
+
+  app.post('/createevent.json', eventController.createEvent);
 };
 
 module.exports = routes;
