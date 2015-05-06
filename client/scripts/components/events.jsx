@@ -23,12 +23,12 @@ var Tapahtumanlisäys = React.createClass({
     return (
 
     <BS.Panel>
-    <form id="signup-form" action="/createevent.json" method="post" onSubmit={this.handleInput}>
+    <form action="/createevent.json" method="post" onSubmit={this.handleInput}>
     <BS.Input name='Title' type='text' id='title' label='Title' placeholder='Enter title' />
     <BS.Input name='Description' type='text' id='description' label='Description' placeholder='Enter description' />
     <BS.Input name='Date' type='text' id='date' label='Date' placeholder='Enter date'/>
     <BS.Input name='Image' type='text' id='image' label='Image' placeholder='Enter image' />
-    <BS.Input type="submit">Lisää tapahtuma</BS.Input>
+    <button>Lisää tapahtuma</button>
     </form>
     </BS.Panel>
     );

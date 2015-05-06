@@ -23,7 +23,7 @@ var eventList = function(req, res) {
     image: 'images/KappaHD.jpg'
   };
   //Tällä voi lisätä rivejä kantaan jos pitää tauluja droppailla
-  Event.create(event)
+  //Event.create(event)
 
   //tämä tarkistus pitää muuttaa jotenki järkeväksi 
   if (typeof req.body.userid === 'undefined'){
@@ -133,7 +133,7 @@ var addParticipation = function(req, res){
   };
 };
 
-var createEvent = function (req, res) {
+var createEvent = function (req, res, next) {
  
 var event = {
     title: req.body.eventtitle,

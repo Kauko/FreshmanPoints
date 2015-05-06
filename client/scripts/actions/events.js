@@ -56,10 +56,11 @@ module.exports = {
 
     var self = this;
     var eventti = serialize(form);
+    var postUrl = form.getAttribute('action') || window.location.pathname;
 
      request
-      .post('/createevent.json')
-      .type('form')
+      .post(postUrl)
+      .type('json')
       .send(eventti)
       .end(function(res){ 
         console.log('tässä ois tää serverin vastaus');
