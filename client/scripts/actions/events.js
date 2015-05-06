@@ -52,22 +52,20 @@ module.exports = {
       .end();
   },
 
-  createEvent: function(form, callback) {
+  createEvent: function(form) {
 
     var self = this;
+
     var eventti = serialize(form);
     var postUrl = form.getAttribute('action') || window.location.pathname;
 
+    console.log(event);
+
      request
-      .post(postUrl)
-      .type('json')
+      .post('/createevent.json')
+      .type('form')
       .send(eventti)
-      .end(function(res){ 
-        console.log('tässä ois tää serverin vastaus');
-        console.log(res);
-        //self.setEvents(res.body); 
-        callback.success(res.body);     
-      });
+      .end();
 
   }
 

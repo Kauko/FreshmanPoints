@@ -136,10 +136,10 @@ var addParticipation = function(req, res){
 var createEvent = function (req, res, next) {
  
 var event = {
-    title: req.body.eventtitle,
-    description: req.body.eventdescription,
-    date: req.body.eventdate,
-    image: req.body.image
+    title: req.body.Title,
+    description: req.body.Description,
+    date: req.body.Date,
+    image: req.body.Image
   };
 
   console.log(event);

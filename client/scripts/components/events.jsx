@@ -23,7 +23,7 @@ var Tapahtumanlisäys = React.createClass({
     return (
 
     <BS.Panel>
-    <form action="/createevent.json" method="post" onSubmit={this.handleInput}>
+    <form enctype='application/json' action="/createevent.json" method="post" onSubmit={this.handleInput}>
     <BS.Input name='Title' type='text' id='title' label='Title' placeholder='Enter title' />
     <BS.Input name='Description' type='text' id='description' label='Description' placeholder='Enter description' />
     <BS.Input name='Date' type='text' id='date' label='Date' placeholder='Enter date'/>
