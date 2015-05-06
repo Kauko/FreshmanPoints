@@ -24,28 +24,37 @@ var userEventList = function(req, res) {
   if (typeof req.body.userid === 'undefined'){
     console.log('Event Controller :: Ei olla kirjauduttu');
     UserEvent.findAll()
-      	.success(function(userevents){
+        .success(function(userevents){
         res.status(200).json(userevents);
         console.log(userevents)
     });
   }else{
-  'select sum(points) as points '
-  ', "userEvents"."userId" '
-  ', "users"."firstName" '
-  ', "users"."lastName" '
-  ', "users"."email" '
-  ', "users"."nickName" '
-  'from "events" '
-  'inner join "userEvents" on "events".ID = "userEvents"."eventId" '
-  'inner join "users" on "users".Id = "userEvents"."userId" '
-  'group by "userEvents"."userId", "users"."firstName" '
-  ', "users"."lastName", "users"."email", "users"."nickName" '
-  'order by sum(points) desc '
-  }
+  var customquery = 'select sum(points) as points '
+  customquery += ', "userEvents"."userId" '
+  customquery += ', "users"."firstName" '
+  customquery += ', "users"."lastName" '
+  customquery += ', "users"."email" '
+  customquery += ', "users"."nickName" '
+  customquery += 'from "events" '
+  customquery += 'inner join "userEvents" on "events".ID = "userEvents"."eventId" '
+  customquery += 'inner join "users" on "users".Id = "userEvents"."userId" '
+  customquery += 'group by "userEvents"."userId", "users"."firstName" '
+  customquery += ', "users"."lastName", "users"."email", "users"."nickName" '
+  customquery += 'order by sum(points) desc '
+  customquery += 'limit = 25'
+ 
+
+  db.sequelize.query(
+      customquery.replace(':userid', req.body.userid)
+      ).success(function(data){
+        //console.log(data);
+        res.status(200).json(data);
+    });
+  };
 };
 
 
 module.exports = {
-	scoreboard: scoreboardPage,
-	userEventlist: userEventList
+  scoreboard: scoreboardPage,
+  userEventlist: userEventList
 }
