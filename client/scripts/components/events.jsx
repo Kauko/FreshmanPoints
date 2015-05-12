@@ -177,15 +177,15 @@ var EventInfo = React.createClass({
                 
         //Tähän mahdollisesti roolin/flagin tarkastaminen ja sen mukaan palikoiden näyttäminen kullekin erikseen
                 
-        if (user.canAccept === true) {
+        //if (user.canAccept === true) {
 
-        element = <Tapahtumahallinta event={this.props.event} user={this.props.user}/>;
+        //element = <Tapahtumahallinta event={this.props.event} user={this.props.user}/>;
      
-          } else if (user.isFreshman === false) {
+        //  } else if (user.isFreshman === false) {
 
         element = <Ilmoittautuminen event={this.props.event} user={this.props.user} hideItem = {this.props.hideItem}/>;
 
-        }
+        //}
 
         return (
            
@@ -333,12 +333,17 @@ var EventInfoList = React.createClass({
 
             <DefaultLayout>
 
-            <div className="Paska">
+            {
+            /*
+
+            <div className="Banner">
             <img src="images/pip.jpg"></img>
             <BS.Button font-size='large'>FUKSI, REKISTERÖIDY</BS.Button>
             </div>
 
-            <div className="ScoreboardPaske">
+          */}
+
+            <div className="Scoreboard">
 
             <BS.Panel header="Scoreboard" bsStyle='info'>
 
