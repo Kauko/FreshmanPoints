@@ -23,7 +23,7 @@ var EventModel = function(sequelize, DataTypes) {
   //Event.belongsToMany(User);  
 
   //Event.sync();
-  Event.sync({ force:true })  
+  //Event.sync({ force:true })  
 
   return Event;
 };

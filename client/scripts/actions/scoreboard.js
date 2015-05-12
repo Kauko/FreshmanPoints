@@ -8,10 +8,10 @@ module.exports = {
 	getUserEvents: function(userId, callback) {
 		var self = this;
 		request
-			.get('/userevents.json')
+			.get('/scoreboard.json')
 			.type('json')
-			.send({userid: userID})
-			.end(function(refs){
+			.end(function(res){
+				console.log(res.body);
 				callback.success(res.body);
 			});
 		},	

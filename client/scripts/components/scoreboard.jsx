@@ -3,8 +3,7 @@
 var React = require('react');
 var DefaultLayout = require('./layouts/default.jsx');
 var BS = require('react-bootstrap');
-//var scoreboardActions = require('../actions/scoreboard');
-
+var scoreboardActions = require('../actions/scoreboard')
 
 var ScoreboardComponent = React.createClass({
   render: function() {
@@ -63,30 +62,28 @@ var data = [
   {first:'Elisa',nick:'asd', last:'Tähtö', points:'1337',id:13}
 ]
 
-data.sort(function(a,b) { return parseFloat(b.points) - parseFloat(a.points) });
+//data.sort(function(a,b) { return parseFloat(b.points) - parseFloat(a.points) });
 
 var PersonList = React.createClass({
   getInitialState: function() {
     return {
-      sortData
-      data
+      userEvents: [],
     };
   },
 
-//  componentDidMount: function() {
-//    var self = this;
-
-//    eventActions.getEvents({
-//      success: function(res){
-//        self.setState({userEvents: res})
-//      }
-//    });
-//  },
+  componentDidMount: function() {
+    var self = this;
+    console.log("asdasd")
+    scoreboardActions.getUserEvents({
+      success: function(res){
+        self.setState({userEvents: res})
+      }
+    });
+  },
 
   render: function() {
         //this.state.data.sort(people.sort(function(a,b) { return parseFloat(a.points) - parseFloat(b.points) } ))
-        var people = this.state.data.map(function(person){
-          
+        var people = this.state.userEvents.map(function(person){
           return (
             <Person first={person.first} last={person.last} nick={person.nick} points={person.points} key={person.id} />
             );
